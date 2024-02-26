@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NGOKBoteConstructor.Pages.ShowingPage">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <ListView  x:Name="listViweData"
+                  Margin="10"
+                  >
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <StackLayout Orientation="Vertical">
+                                <Frame  BorderColor="Salmon"
+                                        Padding="10"
+                                            >
+                                    <StackLayout Margin="0,0,0,0"
+                                         Orientation="Vertical"
+                                         HorizontalOptions="FillAndExpand"
+                                             >
+                                        
+                                        <Label Text="{Binding ItemName}"
+                                               VerticalTextAlignment="Center"
+                                               HorizontalOptions="Center" 
+                                                   TextColor="Navy"/>
+                                     
+                                        <StackLayout Orientation ="Horizontal"
+                                                     HorizontalOptions="Center"
+                                                     >
+                                            <Button Text="Изменить данную запись" Clicked="EditItem"/>
+                                            <Button Text="Показать список" Clicked="ShowTGСhildButtons"/>
+                                            <Button Text="Удалить" Clicked="Deleteitem"/>
+                                            
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
