@@ -4,9 +4,27 @@
              x:Class="NGOKBoteConstructor.Pages.EditPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+
+            <Entry  x:Name="ItemTextEntry"
+                    Text="" />
+            <Entry x:Name="UrlEntry"
+                   Text=""/>
+            <Entry x:Name="TextEntery" Text="Течт ссобщения если сообщение"/>
+            <Picker x:Name="TipePiker" Title="тип обьекта">
+                <Picker.Items>
+                    <x:String>Кнопка</x:String>
+                    <x:String>Сообщение</x:String>
+                    <x:String>Я хз какие типы есть в телеграме</x:String>
+                </Picker.Items>
+            </Picker>
+            
+            <Button Text="" Clicked="SaveText"/>
+            <Button Text="" Clicked="SaveText"/>
+            <Button Text="" Clicked="SaveText"/>
+
+
+
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

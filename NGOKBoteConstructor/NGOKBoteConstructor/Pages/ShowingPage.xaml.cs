@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NGOKBoteConstructor.logics;
+using NGOKBoteConstructor.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,25 +11,18 @@ using Xamarin.Forms.Xaml;
 
 namespace NGOKBoteConstructor.Pages
 {
-    public class SheetClas
-    {
-        public string ItemName {  get; set; }
-    }
-
-
-
-
-
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ShowingPage : ContentPage
     {
+        public ItemsOperator itemsOperator {  get; set; }
+
         public ShowingPage()
         {
             InitializeComponent();
-            List<SheetClas> sheetClas = new List<SheetClas>();
-            sheetClas.Add(new SheetClas() { ItemName = "sdg" });
-            listViweData.ItemsSource = sheetClas;
+            this.itemsOperator = new ItemsOperator();
+            listViweData.ItemsSource = itemsOperator.TGMenu.tGButtons;
         }
+
+
 
         private void Deleteitem(object sender, EventArgs e)
         {
@@ -35,19 +30,27 @@ namespace NGOKBoteConstructor.Pages
 
         }
 
+
+
         private void ShowTGСhildButtons(object sender, EventArgs e)
         {
-
+            TGButton tGButton = (TGButton)(sender as Button).BindingContext;
+            PerentObgect.Text = tGButton.ItemName;
+            listViweData.ItemsSource = tGButton.TGСhildMenu.tGButtons;
 
         }
 
-        private void EditItem(object sender, EventArgs e)
+        private async void EditItem(object sender, EventArgs e)
         {
 
+            TGButton tGButton = (TGButton)(sender as Button).BindingContext;
+            Navigation.PushModalAsync(new NavigationPage(new EditPage(ref tGButton)));
 
         }
 
+        private void Button_Clicked(object sender, EventArgs e)
+        {
 
-
+        }
     }
 }

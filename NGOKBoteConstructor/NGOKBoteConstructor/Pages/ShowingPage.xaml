@@ -3,67 +3,55 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NGOKBoteConstructor.Pages.ShowingPage">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Orientation="Vertical"
+                     VerticalOptions="StartAndExpand">
+            <StackLayout>
 
-            <ListView  x:Name="listViweData"
-                  Margin="10"
-                  >
-
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell >
-                            <StackLayout Orientation="Vertical">
-                                <Frame  BorderColor="Salmon"
-                                        Padding="10"
-                                            >
-                                    <StackLayout Margin="0,0,0,0"
-                                         Orientation="Vertical"
-                                         HorizontalOptions="FillAndExpand"
-                                             >
+                <Label x:Name="PerentObgect" Text="" ></Label>
+                
+                
+                
+                
+                
+                <ListView  x:Name="listViweData"
+                      Margin="10"
+                      >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell >
+                                <StackLayout Orientation="Vertical">
+                                    <Frame  BorderColor="Salmon"
+                                            Padding="10"
+                                                >
+                                        <StackLayout Margin="0,0,0,0"
+                                             Orientation="Vertical"
+                                             HorizontalOptions="FillAndExpand"
+                                                 >
                                         
-                                        <Label Text="{Binding ItemName}"
-                                               VerticalTextAlignment="Center"
-                                               HorizontalOptions="Center" 
-                                                   TextColor="Navy"/>
+                                            <Label Text="{Binding ItemName}"
+                                                   VerticalTextAlignment="Center"
+                                                   HorizontalOptions="Center" 
+                                                       TextColor="Navy"/>
                                      
-                                        <StackLayout Orientation ="Horizontal"
-                                                     HorizontalOptions="Center"
-                                                     >
-                                            <Button Text="Изменить данную запись" Clicked="EditItem"/>
-                                            <Button Text="Показать список" Clicked="ShowTGСhildButtons"/>
-                                            <Button Text="Удалить" Clicked="Deleteitem"/>
+                                            <StackLayout Orientation ="Horizontal"
+                                                         HorizontalOptions="Center"
+                                                         >
+                                                <Button Text="Изменить данную запись" Clicked="EditItem"/>
+                                                <Button Text="Показать список" Clicked="ShowTGСhildButtons"/>
+                                                <Button Text="Удалить" Clicked="Deleteitem"/>
                                             
+                                            </StackLayout>
                                         </StackLayout>
-                                    </StackLayout>
-                                </Frame>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                                    </Frame>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <Button Text="Добавить Кнопку" Clicked="Button_Clicked" />
+            </StackLayout>
 
 
         </StackLayout>
