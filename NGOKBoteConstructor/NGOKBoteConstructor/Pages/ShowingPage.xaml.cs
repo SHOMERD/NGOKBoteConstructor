@@ -15,6 +15,8 @@ namespace NGOKBoteConstructor.Pages
     {
         public ItemsOperator itemsOperator {  get; set; }
 
+
+
         public ShowingPage()
         {
             InitializeComponent();
@@ -29,6 +31,13 @@ namespace NGOKBoteConstructor.Pages
 
 
         }
+
+        private void SaveJson(object sender, EventArgs e)
+        {
+            itemsOperator.CreaitJsonDoc();
+
+        }
+
 
 
 

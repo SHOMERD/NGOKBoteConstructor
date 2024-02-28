@@ -7,7 +7,7 @@
                      VerticalOptions="StartAndExpand">
             <StackLayout>
 
-                <Label x:Name="PerentObgect" Text="" ></Label>
+                <Label x:Name="PerentObgect" Text="" BackgroundColor="White" TextColor="Black" ></Label>
                 
                 
                 
@@ -49,9 +49,11 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
-            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Orientation="Horizontal">
                 <Button Text="Добавить Кнопку" Clicked="Button_Clicked" />
+                <Button Text="Сохранить" Clicked="SaveJson"/>
             </StackLayout>
+            
 
 
         </StackLayout>

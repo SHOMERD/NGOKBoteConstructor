@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace NGOKBoteConstructor.logics
 {
@@ -14,6 +16,21 @@ namespace NGOKBoteConstructor.logics
         }
 
 
+        public ItemsOperator(string JsonMenu) 
+        {
+            this.TGMenu = JsonConvert.DeserializeObject<TGMenu>(JsonMenu);
+        }
+
+
+        public void CreaitJsonDoc()
+        {
+
+            string FileNameString = $"backup.json";
+            string FilePathString = $"A:\\Рабочий стол\\used\\";
+            string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+
+            File.WriteAllText(Path.Combine(folderPath, FileNameString), JsonConvert.SerializeObject(TGMenu));
+        }
 
 
 
