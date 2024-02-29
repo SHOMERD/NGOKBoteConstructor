@@ -10,8 +10,8 @@ namespace NGOKBoteConstructor
         public App()
         {
             InitializeComponent();
-
-            MainPage = new ShowingPage();
+            MainPage = new MainPage();
+            MainPage.Navigation.PushModalAsync(new NavigationPage(new ShowingPage()));
         }
 
         protected override void OnStart()

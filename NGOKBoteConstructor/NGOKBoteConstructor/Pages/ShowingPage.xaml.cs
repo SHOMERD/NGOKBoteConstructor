@@ -21,10 +21,24 @@ namespace NGOKBoteConstructor.Pages
         {
             InitializeComponent();
             this.itemsOperator = new ItemsOperator();
-            listViweData.ItemsSource = itemsOperator.TGMenu.tGButtons;
+            listViweData.ItemsSource = this.itemsOperator.TGMenu.tGButtons;
         }
 
-
+        public ShowingPage(TGMenu tGMenu)
+        {
+            InitializeComponent();
+            if (tGMenu != null) 
+            {
+                this.listViweData.ItemsSource = tGMenu.tGButtons;
+                BackButton.IsEnabled = true;
+                BackButton.IsVisible =true;
+            }
+            else
+            {
+                Navigation.PopModalAsync();
+            }
+            
+        }
 
         private void Deleteitem(object sender, EventArgs e)
         {
@@ -45,7 +59,10 @@ namespace NGOKBoteConstructor.Pages
         {
             TGButton tGButton = (TGButton)(sender as Button).BindingContext;
             PerentObgect.Text = tGButton.ItemName;
-            listViweData.ItemsSource = tGButton.TGСhildMenu.tGButtons;
+            if (tGButton.TGСhildMenu != null)
+            {
+                Navigation.PushModalAsync(new ShowingPage(tGButton.TGСhildMenu));
+            }
 
         }
 
@@ -57,9 +74,16 @@ namespace NGOKBoteConstructor.Pages
 
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void AddButton(object sender, EventArgs e)
         {
+            Console.WriteLine(sender.ToString());
+            Navigation.GetType();
+        }
 
+        private void ReteternPerentPage(object sender, EventArgs e)
+        {
+            
+            Navigation.PopModalAsync();
         }
     }
 }

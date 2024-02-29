@@ -5,11 +5,13 @@
     <ContentPage.Content>
         <StackLayout>
 
-            <Entry  x:Name="ItemTextEntry"
-                    Text="" />
-            <Entry x:Name="UrlEntry"
+            <Editor AutoSize="TextChanges"/>
+            <Editor x:Name="ItemTextEntry"/>
+            <Editor x:Name="UrlEntry"
                    Text=""/>
-            <Entry x:Name="TextEntery" Text="Течт ссобщения если сообщение"/>
+            <Editor x:Name="TextEntery" Text="Текст ссобщения"/>
+            
+            
             <Picker x:Name="TipePiker" Title="тип обьекта">
                 <Picker.Items>
                     <x:String>Кнопка</x:String>

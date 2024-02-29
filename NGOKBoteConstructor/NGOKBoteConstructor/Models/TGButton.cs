@@ -14,7 +14,7 @@ namespace NGOKBoteConstructor.Models
 
         public bool UnytitletBoolParametr {  get; set; }
         public Uri Url { get; set; }
-        public GIFBitmap Bitmap { get; set; }
+
 
         public TGMenu TGСhildMenu { get; set; } // ore public List<TGButtons> TGСhildButtons    ore  public List<Uri> TGСhildUriOfMenu
 
