@@ -55,7 +55,8 @@ namespace NGOKBoteConstructor.logics
             {
                 ItemName = "sdzfdhbgdfbzdfbg",
                 TGСhildMenu = new TGMenu() { ItemName = ".jhj.u.,",
-                                             tGButtons = new List<TGButton>() { new TGButton() { ItemName = "sdsgsdwhgsehg" }, new TGButton() { ItemName = "shshfgsh" }, new TGButton() { ItemName = "xc myuik,ui" }
+                                             tGButtons = new List<TGButton>() { new TGButton() { ItemName = "sdsgsdwhgsehg" }, new TGButton() { ItemName = "shshfgsh" }, new TGButton() { ItemName = "xc myuik,ui", 
+                                                 TGСhildMenu = new TGMenu(){ ItemName = "awgjas", tGButtons = new List<TGButton>(){new TGButton(){ ItemName = "hsdgflkghja" } } } }
                                              }
                 }
             });

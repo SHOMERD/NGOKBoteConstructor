@@ -10,13 +10,15 @@ namespace NGOKBoteConstructor.Models
         public string ItemName { get; set; }
         public string Title { get; set; }
 
-        public int TipeOfItem { get; set; }
+        //public bool  {  get; set; } дом кнопка с сылкой 
 
-        public bool UnytitletBoolParametr {  get; set; }
-        public Uri Url { get; set; }
+        public String TextOfMenu { get; set; }
 
 
-        public TGMenu TGСhildMenu { get; set; } // ore public List<TGButtons> TGСhildButtons    ore  public List<Uri> TGСhildUriOfMenu
+        public bool IsHasRebcursiveButtons { get; set; }
+        List<TGButton> RecursiveButtons { get; set; }
+
+        public string Col { get; set; } // ore public List<TGButtons> TGСhildButtons    ore  public List<Uri> TGСhildUriOfMenu
 
     }
 }

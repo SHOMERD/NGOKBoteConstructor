@@ -11,6 +11,13 @@ namespace NGOKBoteConstructor.Models
 
     public class Stud
     {
+        public string NameOfButton { get; set; }
+        Button Button { get; set; }
+    }
+
+
+    public class Button
+    {
         public bool Recursive { get; set; }
         public List<string> callbacks { get; set; }
         public List<string> text { get; set; }
