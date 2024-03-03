@@ -16,19 +16,29 @@ namespace NGOKBoteConstructor.Pages
 
         public TGButton TgButton {  get; set; }
 
-        public EditPage(ref TGButton TgButton )
+        public EditPage(TGButton TgButton )
         {
             InitializeComponent();
             this.TgButton = TgButton;
-            ItemTextEntry.Text = TgButton.ItemName;
-            
+            TextOfMenuEntery.Text = TgButton.TextOfMenu;
+            TextEntery.Text = TgButton.Title;
+            ItemTegEntry.Text = TgButton.Teg;
+            IsHasRebcursive.IsToggled = TgButton.IsHasRebcursiveButtons;
+            TegIsSeteblede.IsEnabled = string.IsNullOrEmpty(TgButton.Teg);
+
+
         }
 
         private void SaveText(object sender, EventArgs e)
         {
             TGButton tGButton = new TGButton();
-            tGButton.ItemName = ItemTextEntry.Text;
+            tGButton.Teg = ItemTegEntry.Text;
             TgButton = tGButton;
+            Navigation.PopModalAsync();
+        }
+
+        private void CancelChanges(object sender, EventArgs e)
+        { 
             Navigation.PopModalAsync();
         }
     }

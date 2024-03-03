@@ -12,11 +12,11 @@ namespace NGOKBoteConstructor.Models
     public class Stud
     {
         public string NameOfButton { get; set; }
-        Button Button { get; set; }
+        EditableTag Button { get; set; }
     }
 
 
-    public class Button
+    public class EditableTag
     {
         public bool Recursive { get; set; }
         public List<string> callbacks { get; set; }

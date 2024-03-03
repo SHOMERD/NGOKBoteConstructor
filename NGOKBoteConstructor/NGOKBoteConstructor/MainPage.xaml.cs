@@ -13,6 +13,7 @@ namespace NGOKBoteConstructor
         public MainPage()
         {
             InitializeComponent();
+            //Application.Current.UserAppTheme = OSAppTheme.Light;
         }
     }
 }

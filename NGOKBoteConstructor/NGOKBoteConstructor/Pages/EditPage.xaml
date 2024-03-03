@@ -2,31 +2,43 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NGOKBoteConstructor.Pages.EditPage">
-    <ContentPage.Content>
-        <StackLayout>
 
-            <Editor AutoSize="TextChanges"/>
-            <Editor x:Name="ItemTextEntry"/>
-            <Editor x:Name="UrlEntry"
-                   Text=""/>
-            <Editor x:Name="TextEntery" Text="Текст ссобщения"/>
+
+    <ContentPage.Content >
+        <StackLayout >
+
+            <Label/>
+            <Label Text="Текст на кнопке:"/>
+            <Entry x:Name="TextEntery"/>
+
+            <Label Text="Текст подменю:"/>
+            <Editor AutoSize="TextChanges" x:Name="TextOfMenuEntery"/>
+
+            <Label/>
+            <StackLayout x:Name="TegIsSeteblede" IsEnabled="False">
+                <Label Text="Тег кнопки:"/>
+                <Entry x:Name="ItemTegEntry"/>
+            </StackLayout>
+
+           
+            <Label/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Label Text="Кнопка имеет подменю   " VerticalOptions="CenterAndExpand"/>
+                <Switch  x:Name="IsHasRebcursive" />
+            </StackLayout>
+
+
+            <Label/>
+            <Label/>
+            <Label/>
             
             
-            <Picker x:Name="TipePiker" Title="тип обьекта">
-                <Picker.Items>
-                    <x:String>Кнопка</x:String>
-                    <x:String>Сообщение</x:String>
-                    <x:String>Я хз какие типы есть в телеграме</x:String>
-                </Picker.Items>
-            </Picker>
+            <StackLayout Orientation="Vertical">
+                <Button Text="Сохранить" Clicked="SaveText"/>
+                <Button Text="Отмена" Clicked="CancelChanges"/>
+            </StackLayout>
+
             
-            <Button Text="" Clicked="SaveText"/>
-            <Button Text="" Clicked="SaveText"/>
-            <Button Text="" Clicked="SaveText"/>
-
-
-
-
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace NGOKBoteConstructor.Pages
@@ -20,17 +21,28 @@ namespace NGOKBoteConstructor.Pages
         public ShowingPage()
         {
             InitializeComponent();
+
             this.itemsOperator = new ItemsOperator();
-            listViweData.ItemsSource = this.itemsOperator.TGMenu.tGButtons;
+            listViweData.ItemsSource = this.itemsOperator.TGMenu.TGСhildMenu;
         }
 
-        public ShowingPage(TGMenu tGMenu)
+        public ShowingPage(TGButton TGButton, bool IsRecursive)
         {
             InitializeComponent();
-            if (tGMenu != null) 
+            if (IsRecursive && TGButton.RecursiveButtons != null)
             {
-                this.listViweData.ItemsSource = tGMenu.tGButtons;
-                BackButton.IsEnabled = true;
+                PerentTeg.Text = "Тег нажатой кнопки: " + TGButton.Teg;
+                PerentObgect.Text = "Текст меню: \n\n" + TGButton.TextOfMenu;
+                TextOfMenu.IsVisible = true;
+                this.listViweData.ItemsSource = TGButton.RecursiveButtons;
+                BackButton.IsVisible = true;
+            }
+            else if (TGButton.TGСhildMenu != null && !IsRecursive) 
+            {
+                PerentTeg.Text = "Тег нажатой кнопки: " + TGButton.Teg;
+                PerentObgect.Text = "Текст меню: " + TGButton.TextOfMenu;
+                TextOfMenu.IsVisible = true;
+                this.listViweData.ItemsSource = TGButton.TGСhildMenu;
                 BackButton.IsVisible =true;
             }
             else
@@ -48,41 +60,53 @@ namespace NGOKBoteConstructor.Pages
 
         private void SaveJson(object sender, EventArgs e)
         {
-            itemsOperator.CreaitJsonDoc();
+            //itemsOperator.CreaitJsonDoc();
 
         }
 
 
 
 
-        private void ShowTGСhildButtons(object sender, EventArgs e)
+        private void ShowTGСhildMenu(object sender, EventArgs e)
         {
-            TGButton tGButton = (TGButton)(sender as Button).BindingContext;
-            PerentObgect.Text = tGButton.ItemName;
+            TGButton tGButton = (TGButton)(sender as Xamarin.Forms.Button).BindingContext;
+            
             if (tGButton.TGСhildMenu != null)
             {
-                Navigation.PushModalAsync(new ShowingPage(tGButton.TGСhildMenu));
+                Navigation.PushModalAsync(new ShowingPage(tGButton, false));
+            }
+
+        }
+        
+        private void ShowRecursiveButtons(object sender, EventArgs e)
+        {
+            TGButton tGButton = (TGButton)(sender as Xamarin.Forms.Button).BindingContext;
+
+            if (tGButton.RecursiveButtons != null)
+            {
+                Navigation.PushModalAsync(new ShowingPage(tGButton, true));
             }
 
         }
 
+
+
+
         private async void EditItem(object sender, EventArgs e)
         {
 
-            TGButton tGButton = (TGButton)(sender as Button).BindingContext;
-            Navigation.PushModalAsync(new NavigationPage(new EditPage(ref tGButton)));
+            TGButton tGButton = (TGButton)(sender as Xamarin.Forms.Button).BindingContext;
+            Navigation.PushModalAsync(new NavigationPage(new EditPage(tGButton)));
 
         }
 
         private void AddButton(object sender, EventArgs e)
         {
-            Console.WriteLine(sender.ToString());
-            Navigation.GetType();
+            Navigation.PushModalAsync(new NavigationPage(new EditPage(new TGButton())));
         }
 
         private void ReteternPerentPage(object sender, EventArgs e)
         {
-            
             Navigation.PopModalAsync();
         }
     }

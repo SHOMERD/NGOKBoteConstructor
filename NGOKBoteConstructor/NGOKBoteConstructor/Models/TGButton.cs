@@ -7,7 +7,7 @@ namespace NGOKBoteConstructor.Models
 {
     public class TGButton  /// ore TGItem
     {
-        public string ItemName { get; set; }
+        public string Teg { get; set; }
         public string Title { get; set; }
 
         //public bool  {  get; set; } дом кнопка с сылкой 
@@ -16,9 +16,13 @@ namespace NGOKBoteConstructor.Models
 
 
         public bool IsHasRebcursiveButtons { get; set; }
-        List<TGButton> RecursiveButtons { get; set; }
+        public List<TGButton> RecursiveButtons { get; set; }
 
-        public string Col { get; set; } // ore public List<TGButtons> TGСhildButtons    ore  public List<Uri> TGСhildUriOfMenu
+        public string Col { get; set; }
+
+        public List<TGButton> TGСhildMenu { get; set; }
+
+
 
     }
 }

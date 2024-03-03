@@ -9,7 +9,7 @@ namespace NGOKBoteConstructor.logics
 {
     public class ItemsOperator
     {
-        public TGMenu TGMenu { get; set; }
+        public TGButton TGMenu { get; set; }
         
         public ItemsOperator() {
             this.TGMenu = SheetMetob();
@@ -18,7 +18,7 @@ namespace NGOKBoteConstructor.logics
 
         public ItemsOperator(string JsonMenu) 
         {
-            this.TGMenu = JsonConvert.DeserializeObject<TGMenu>(JsonMenu);
+            this.TGMenu = JsonConvert.DeserializeObject<TGButton>(JsonMenu);
         }
 
 
@@ -40,37 +40,40 @@ namespace NGOKBoteConstructor.logics
 
 
 
-        public TGMenu SheetMetob()
+        public TGButton SheetMetob()
         {
-            TGMenu tGMenu = new TGMenu();
-            tGMenu.tGButtons = new List<TGButton>();
+            TGButton tGMenu = new TGButton();
+            tGMenu.TGСhildMenu = new List<TGButton>();
 
 
-            tGMenu.tGButtons.Add(new TGButton() { ItemName = "sdg" });
+            tGMenu.TGСhildMenu.Add(new TGButton() { Teg = "sdg", Title = "sdg" });
 
 
 
-            tGMenu.tGButtons.Add(new TGButton() { ItemName = "sdg" });
-            tGMenu.tGButtons.Add(new TGButton()
+            tGMenu.TGСhildMenu.Add(new TGButton() { Teg = "sdg", Title = "sdg" });
+            tGMenu.TGСhildMenu.Add(new TGButton()
             {
-                ItemName = "sdzfdhbgdfbzdfbg",
-                TGСhildMenu = new TGMenu() { ItemName = ".jhj.u.,",
-                                             tGButtons = new List<TGButton>() { new TGButton() { ItemName = "sdsgsdwhgsehg" }, new TGButton() { ItemName = "shshfgsh" }, new TGButton() { ItemName = "xc myuik,ui", 
-                                                 TGСhildMenu = new TGMenu(){ ItemName = "awgjas", tGButtons = new List<TGButton>(){new TGButton(){ ItemName = "hsdgflkghja" } } } }
+                Teg = "HasMenu",
+                Title = "HasMenu",
+                TextOfMenu = "dgdsfgd\nsagasdfgadsfgadf\nsdgsadgasdgasdfgasdg\nasrtgasdrg",
+                TGСhildMenu = new List<TGButton>{ new TGButton() { Teg = "sdsgsdwhgsehg" , Title = "sdsgsdwhgsehg"}, new TGButton() { Teg = "shshfgsh" , Title = "shshfgsh"}, new TGButton() { Teg = "xc myuik,ui", Title = "xc myuik,ui",
+                                                 TGСhildMenu = new List<TGButton>{new TGButton(){ Teg = "hsdgflkghja" , Title = "hsdgflkghja" } }
                                              }
                 }
             });
-            tGMenu.tGButtons.Add(new TGButton() { ItemName = "sasrhdg" });
-            tGMenu.tGButtons.Add(new TGButton() { ItemName = "ssdgdg" });
-            tGMenu.tGButtons.Add(new TGButton() { ItemName = "sdfh" });
-            tGMenu.tGButtons.Add(new TGButton() { ItemName = "sdzg" });
-            tGMenu.tGButtons.Add(new TGButton() { ItemName = "ssdfhdg" });
-            tGMenu.tGButtons.Add(new TGButton() { ItemName = "sjntdzjdg" });
-            tGMenu.tGButtons.Add(new TGButton() { ItemName = "sdzbfdzg" });
-            tGMenu.tGButtons.Add(new TGButton() { ItemName = "szdg" });
-            tGMenu.tGButtons.Add(new TGButton() { ItemName = "szdtndg" });
-            tGMenu.tGButtons.Add(new TGButton() { ItemName = "seragawregdg" });
-            tGMenu.tGButtons.Add(new TGButton() { ItemName = "sdzngfzg" });
+            tGMenu.TGСhildMenu.Add(new TGButton() { Teg = "HasRebcursiveButtons", IsHasRebcursiveButtons = true, Title = "HasRebcursiveButtons",
+                RecursiveButtons = new List<TGButton>() { new TGButton() { Teg = "yl;i9o8" , Title = "yl;i9o8" }, new TGButton() { Teg = ",iy.,yui.," , Title = ",iy.,yui.," } }
+            });
+            tGMenu.TGСhildMenu.Add(new TGButton() { Teg = "ssdgdg", Title = "ssdgdg" });
+            tGMenu.TGСhildMenu.Add(new TGButton() { Teg = "sdfh" , Title = "sdfh" });
+            tGMenu.TGСhildMenu.Add(new TGButton() { Teg = "sdzg", Title = "sdzg" });
+            tGMenu.TGСhildMenu.Add(new TGButton() { Teg = "ssdfhdg" , Title = "ssdfhdg" });
+            tGMenu.TGСhildMenu.Add(new TGButton() { Teg = "sjntdzjdg" , Title = "sjntdzjdg" });
+            tGMenu.TGСhildMenu.Add(new TGButton() { Teg = "sdzbfdzg" , Title = "sdzbfdzg" });
+            tGMenu.TGСhildMenu.Add(new TGButton() { Teg = "szdg" , Title = "szdg" });
+            tGMenu.TGСhildMenu.Add(new TGButton() {   Teg = "szdtndg" , Title = "szdtndg" });
+            tGMenu.TGСhildMenu.Add(new TGButton() { Teg = "seragawregdg" , Title = "seragawregdg" });
+            tGMenu.TGСhildMenu.Add(new TGButton() { Teg = "sdzngfzg" , Title = "sdzngfzg" });
 
             return tGMenu;
         }
