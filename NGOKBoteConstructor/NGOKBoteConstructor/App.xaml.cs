@@ -1,4 +1,5 @@
-﻿using NGOKBoteConstructor.Pages;
+﻿using NGOKBoteConstructor.logics;
+using NGOKBoteConstructor.Pages;
 using System;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -10,11 +11,12 @@ namespace NGOKBoteConstructor
     {
         public App()
         {
-            
             InitializeComponent();
-            Application.Current.UserAppTheme = OSAppTheme.Light;
-            MainPage = new MainPage();
-            MainPage.Navigation.PushModalAsync(new NavigationPage(new ShowingPage()));
+            MainPage = new Page();
+            ItemsOperator itemsOperator = new ItemsOperator();
+
+
+            MainPage.Navigation.PushModalAsync(new NavigationPage(new ShowingPage(itemsOperator, itemsOperator.TGMenu, false)));
         }
 
         protected override void OnStart()

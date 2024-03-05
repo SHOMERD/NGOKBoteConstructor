@@ -14,48 +14,55 @@ namespace NGOKBoteConstructor.Pages
 {
     public partial class ShowingPage : ContentPage
     {
-        public ItemsOperator itemsOperator {  get; set; }
+        public ItemsOperator itemsOperator;
+        string ActiveButtonTeg;
+        bool IsRecursive;
 
-
-
-        public ShowingPage()
+        public ShowingPage(ItemsOperator itemsOperator, TGButton TGButton, bool IsRecursive)
         {
             InitializeComponent();
-
-            this.itemsOperator = new ItemsOperator();
-            listViweData.ItemsSource = this.itemsOperator.TGMenu.TGСhildMenu;
+            this.itemsOperator = itemsOperator;
+            this.ActiveButtonTeg = TGButton.Teg;
+            this.IsRecursive = IsRecursive;
+            SetViweData();
         }
 
-        public ShowingPage(TGButton TGButton, bool IsRecursive)
+        public void SetViweData()
         {
-            InitializeComponent();
-            if (IsRecursive && TGButton.RecursiveButtons != null)
-            {
-                PerentTeg.Text = "Тег нажатой кнопки: " + TGButton.Teg;
-                PerentObgect.Text = "Текст меню: \n\n" + TGButton.TextOfMenu;
-                TextOfMenu.IsVisible = true;
-                this.listViweData.ItemsSource = TGButton.RecursiveButtons;
-                BackButton.IsVisible = true;
+
+            TGButton tGButton = itemsOperator.GetTGbuttonByTeg(ActiveButtonTeg);
+            PerentTeg.Text = "Тег нажатой кнопки: " + tGButton.Teg;
+            PerentObgect.Text = "Текст меню:\n" + tGButton.TextOfMenu;
+            listViweData.ItemsSource = null;
+            if (IsRecursive) { 
+                listViweData.ItemsSource = tGButton.RecursiveButtons;
             }
-            else if (TGButton.TGСhildMenu != null && !IsRecursive) 
+            else 
             {
-                PerentTeg.Text = "Тег нажатой кнопки: " + TGButton.Teg;
-                PerentObgect.Text = "Текст меню: " + TGButton.TextOfMenu;
-                TextOfMenu.IsVisible = true;
-                this.listViweData.ItemsSource = TGButton.TGСhildMenu;
-                BackButton.IsVisible =true;
+                listViweData.ItemsSource = tGButton.TGСhildMenu;                                                                                
+            }   
+
+            if (itemsOperator.TGMenu.Teg == ActiveButtonTeg) 
+            {
+                BackButton.IsVisible = false;
             }
             else
             {
-                Navigation.PopModalAsync();
+                BackButton.IsVisible = true;
             }
-            
+
         }
 
-        private void Deleteitem(object sender, EventArgs e)
+        protected override void OnAppearing()
         {
+            base.OnAppearing();
+            SetViweData();
+        }
 
-
+        private void DeleteItemButton(object sender, EventArgs e)
+        {
+            itemsOperator.DeliteButton((TGButton)(sender as Xamarin.Forms.Button).BindingContext, ActiveButtonTeg, IsRecursive);
+            OnAppearing();
         }
 
         private void SaveJson(object sender, EventArgs e)
@@ -70,22 +77,16 @@ namespace NGOKBoteConstructor.Pages
         private void ShowTGСhildMenu(object sender, EventArgs e)
         {
             TGButton tGButton = (TGButton)(sender as Xamarin.Forms.Button).BindingContext;
+            Navigation.PushModalAsync(new ShowingPage(itemsOperator, tGButton, false));
             
-            if (tGButton.TGСhildMenu != null)
-            {
-                Navigation.PushModalAsync(new ShowingPage(tGButton, false));
-            }
 
         }
         
         private void ShowRecursiveButtons(object sender, EventArgs e)
         {
             TGButton tGButton = (TGButton)(sender as Xamarin.Forms.Button).BindingContext;
-
-            if (tGButton.RecursiveButtons != null)
-            {
-                Navigation.PushModalAsync(new ShowingPage(tGButton, true));
-            }
+            Navigation.PushModalAsync(new ShowingPage(itemsOperator, tGButton, true));
+   
 
         }
 
@@ -96,13 +97,29 @@ namespace NGOKBoteConstructor.Pages
         {
 
             TGButton tGButton = (TGButton)(sender as Xamarin.Forms.Button).BindingContext;
-            Navigation.PushModalAsync(new NavigationPage(new EditPage(tGButton)));
-
+            if (tGButton != null)
+            {
+                Navigation.PushModalAsync(new NavigationPage(new EditPage(itemsOperator, itemsOperator.GetTGbuttonByTeg(tGButton.Teg))));
+            }
+            else
+            {
+                Navigation.PushModalAsync(new NavigationPage(new EditPage(itemsOperator, itemsOperator.GetTGbuttonByTeg(ActiveButtonTeg))));
+            }
         }
 
-        private void AddButton(object sender, EventArgs e)
+        private async void AddButton(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new NavigationPage(new EditPage(new TGButton())));
+            TGButton tGButton = new TGButton() { Title = "новая кнопка"};
+            if (IsRecursive)
+            { 
+                (itemsOperator.GetTGbuttonByTeg(ActiveButtonTeg)).RecursiveButtons.Add(tGButton);
+            }
+            else
+            {
+                (itemsOperator.GetTGbuttonByTeg(ActiveButtonTeg)).TGСhildMenu.Add(tGButton);
+            }
+            await Navigation.PushModalAsync(new NavigationPage(new EditPage(itemsOperator, itemsOperator.GetTGbuttonByTeg(null), ActiveButtonTeg, IsRecursive)));
+            
         }
 
         private void ReteternPerentPage(object sender, EventArgs e)

@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="NGOKBoteConstructor.Pages.ShowingPage">
+             x:Class="NGOKBoteConstructor.Pages.ShowingPage"
+             >
 
         
     <ContentPage.Content>
@@ -9,7 +10,7 @@
                          VerticalOptions="StartAndExpand" 
                          >
                 <StackLayout>
-                <StackLayout  x:Name="TextOfMenu"  IsVisible="False">
+                <StackLayout  x:Name="TextOfMenu">
                     <Frame BorderColor="Gray">
                         <StackLayout>
                             <Label x:Name="PerentTeg" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
@@ -18,6 +19,7 @@
                             <StackLayout HorizontalOptions="Center">
                                 <Label x:Name="PerentObgect" Text="" VerticalTextAlignment="Center" />
                             </StackLayout>
+                            <Button Text="Изменить данную запись" Clicked="EditItem"/>
                         </StackLayout>
                     </Frame>
                 </StackLayout>
@@ -53,7 +55,7 @@
                                                 <Button Text="Изменить данную запись" Clicked="EditItem"/>
                                                 <Button Text="Показать подменю" Clicked="ShowTGСhildMenu" />
                                                 <Button Text="Показать список подкнопок" Clicked="ShowRecursiveButtons" IsVisible="{Binding IsHasRebcursiveButtons}"/>
-                                                <Button Text="Удалить" Clicked="Deleteitem" />
+                                                <Button Text="Удалить" Clicked="DeleteItemButton" />
                                             
                                                 </StackLayout>
                                             </StackLayout>

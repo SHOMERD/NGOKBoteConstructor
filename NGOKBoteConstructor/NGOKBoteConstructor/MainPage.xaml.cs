@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NGOKBoteConstructor.logics;
+using NGOKBoteConstructor.Pages;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -13,7 +15,6 @@ namespace NGOKBoteConstructor
         public MainPage()
         {
             InitializeComponent();
-            //Application.Current.UserAppTheme = OSAppTheme.Light;
         }
     }
 }

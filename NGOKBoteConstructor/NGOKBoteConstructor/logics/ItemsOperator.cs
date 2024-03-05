@@ -10,16 +10,64 @@ namespace NGOKBoteConstructor.logics
     public class ItemsOperator
     {
         public TGButton TGMenu { get; set; }
-        
+
         public ItemsOperator() {
             this.TGMenu = SheetMetob();
         }
 
 
-        public ItemsOperator(string JsonMenu) 
+        public ItemsOperator(string JsonMenu)
         {
             this.TGMenu = JsonConvert.DeserializeObject<TGButton>(JsonMenu);
         }
+
+        public TGButton GetTGbuttonByTeg(string TegToFound, TGButton tGButton = null)
+        {
+            if (tGButton == null)
+            {
+                tGButton = TGMenu;
+            }
+
+            if (TegToFound == tGButton.Teg) {
+                return tGButton;
+            }
+
+            if (tGButton.TGСhildMenu != null)
+            {
+                for (int i = 0; i < tGButton.TGСhildMenu.Count; i++)
+                {
+                    TGButton tGButton1 = GetTGbuttonByTeg(TegToFound, tGButton.TGСhildMenu[i]);
+                    if (tGButton1 != null) { return tGButton1; }
+                }
+            }
+            if (tGButton.RecursiveButtons != null)
+            {
+                for (int i = 0; i < tGButton.RecursiveButtons.Count; i++)
+                {
+                    TGButton tGButton1 =  GetTGbuttonByTeg(TegToFound, tGButton.RecursiveButtons[i]);
+                    if (tGButton1 != null) { return tGButton1; }
+                }
+            }
+            
+
+            return null;
+            
+        }
+
+        public void DeliteButton(TGButton tgButtonToF, string PerentTeg, bool isRecursive)
+        {
+            TGButton tgButton = GetTGbuttonByTeg(PerentTeg);
+            if (isRecursive) 
+            {
+                tgButton.RecursiveButtons.Remove(tgButtonToF);
+            }else
+            {
+                tgButton.TGСhildMenu.Remove(tgButtonToF);
+            }
+
+
+        }
+
 
 
         public void CreaitJsonDoc()
@@ -42,15 +90,15 @@ namespace NGOKBoteConstructor.logics
 
         public TGButton SheetMetob()
         {
-            TGButton tGMenu = new TGButton();
+            TGButton tGMenu = new TGButton() {IsHasRebcursiveButtons = false,  Teg = "StartMenu", Title = "StartMenu", TextOfMenu = "Приветствую Вас! Я бот Новосибирского городского открытого колледжа, подскажите, а кем являетесь Вы?\r\n" };
             tGMenu.TGСhildMenu = new List<TGButton>();
 
 
-            tGMenu.TGСhildMenu.Add(new TGButton() { Teg = "sdg", Title = "sdg" });
+            tGMenu.TGСhildMenu.Add(new TGButton() { Teg = "sdg", Title = "фывапвфыапрвыф" });
 
 
 
-            tGMenu.TGСhildMenu.Add(new TGButton() { Teg = "sdg", Title = "sdg" });
+            tGMenu.TGСhildMenu.Add(new TGButton() { Teg = "sdg", Title = "ыврфварфвыарп" });
             tGMenu.TGСhildMenu.Add(new TGButton()
             {
                 Teg = "HasMenu",

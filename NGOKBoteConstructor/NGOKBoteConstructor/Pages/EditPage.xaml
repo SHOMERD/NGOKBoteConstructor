@@ -9,7 +9,7 @@
 
             <Label/>
             <Label Text="Текст на кнопке:"/>
-            <Entry x:Name="TextEntery"/>
+            <Entry x:Name="TitleEntery"/>
 
             <Label Text="Текст подменю:"/>
             <Editor AutoSize="TextChanges" x:Name="TextOfMenuEntery"/>
