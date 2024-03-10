@@ -33,6 +33,25 @@ namespace NGOKBoteConstructor.Pages
             TextOfMenuEntery.Text = TgButton.TextOfMenu;
             TitleEntery.Text = TgButton.Title;
             ItemTegEntry.Text = TgButton.Teg;
+
+            List<int> ints = new List<int>();
+            TGButton tGButton = itemsOperator.GetTGbuttonByTeg(PerentTeg);
+
+            if (isRecursive) { 
+
+                for (int i = 0; i < tGButton.RecursiveButtons.Count; i++)
+                {
+                    ints.Add(i+1);
+                }
+            }else
+            {
+                for (int i = 0; i < tGButton.TGСhildMenu.Count; i++)
+                {
+                    ints.Add(i + 1);
+                }
+            }
+
+            PlacePicker.ItemsSource = ints;
             IsHasRebcursive.IsToggled = TgButton.IsHasRebcursiveButtons;
             TegIsSeteblede.IsEnabled = string.IsNullOrEmpty(TgButton.Teg);
 
@@ -44,10 +63,14 @@ namespace NGOKBoteConstructor.Pages
         {
             if (string.IsNullOrEmpty(TgButton.Teg))
             {
-                if ((itemsOperator.GetTGbuttonByTeg(ItemTegEntry.Text, null) != null))
+                if (!string.IsNullOrEmpty(ItemTegEntry.Text))
                 {
-                    return false;
-                }
+                    if ((itemsOperator.GetTGbuttonByTeg(ItemTegEntry.Text) != null))
+                    {
+                        return false;
+                    }
+                }else { return false; }
+                
 
             }
             return true;
@@ -63,14 +86,43 @@ namespace NGOKBoteConstructor.Pages
                 TgButton.Title = TitleEntery.Text;
                 TgButton.IsHasRebcursiveButtons = IsHasRebcursive.IsToggled;
                 TgButton.Teg = ItemTegEntry.Text;
+                TgButton.Url = ChekUrl(UriEntry.Text);
+
+
+                if (PlacePicker.SelectedIndex != -1)
+                {
+
+                    TGButton BuferButtot = new TGButton();
+                    BuferButtot = TgButton;
+                    itemsOperator.DeliteButton(TgButton, PerentTeg, isRecursive);
+
+                    if (isRecursive) { itemsOperator.GetTGbuttonByTeg(PerentTeg).RecursiveButtons.Insert(PlacePicker.SelectedIndex, BuferButtot); }
+                    else { itemsOperator.GetTGbuttonByTeg(PerentTeg).TGСhildMenu.Insert(PlacePicker.SelectedIndex, BuferButtot); }
+                    
+                }
                 Navigation.PopModalAsync();
+                
             }
             else
             {
-                App.Current.MainPage.DisplayAlert("Нельзя сохранить обьект", "Неправельно заданный тег", "ок");
+                App.Current.MainPage.DisplayAlert("Нельзя сохранить объект!", "Неправильно задан тег", "ок");
             }
             
         }
+
+        public Uri ChekUrl(string Url)
+        {
+            try
+            {
+                return new Uri(Url);
+            }
+            catch (Exception)
+            {
+                App.Current.MainPage.DisplayAlert("Нельзя сохранить объект!", "Неправельно задана ссылка\nИзмените ссылку или удалите её. ", "ок");
+                return null;
+            }
+        }
+
 
         private void CancelChanges(object sender, EventArgs e)
         { 

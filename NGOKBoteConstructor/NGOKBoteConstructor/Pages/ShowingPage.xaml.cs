@@ -67,7 +67,23 @@ namespace NGOKBoteConstructor.Pages
 
         private void SaveJson(object sender, EventArgs e)
         {
-            //itemsOperator.CreaitJsonDoc();
+            TGButton tGButton = (TGButton)(sender as Xamarin.Forms.Button).BindingContext;
+
+            if (tGButton != null)
+            {
+                RecuestConsrtuktor.CreateJsonFile(itemsOperator.GetTGbuttonByTeg(tGButton.Teg));
+            }
+            else
+            {
+                RecuestConsrtuktor.CreateJsonFile(itemsOperator.GetTGbuttonByTeg(ActiveButtonTeg));
+            }
+            
+
+        }
+
+        private void Save(object sender, EventArgs e)
+        {
+            itemsOperator.SeveStats();
 
         }
 
@@ -99,11 +115,11 @@ namespace NGOKBoteConstructor.Pages
             TGButton tGButton = (TGButton)(sender as Xamarin.Forms.Button).BindingContext;
             if (tGButton != null)
             {
-                Navigation.PushModalAsync(new NavigationPage(new EditPage(itemsOperator, itemsOperator.GetTGbuttonByTeg(tGButton.Teg))));
+                Navigation.PushModalAsync(new NavigationPage(new EditPage(itemsOperator, itemsOperator.GetTGbuttonByTeg(tGButton.Teg), ActiveButtonTeg, IsRecursive)));
             }
             else
             {
-                Navigation.PushModalAsync(new NavigationPage(new EditPage(itemsOperator, itemsOperator.GetTGbuttonByTeg(ActiveButtonTeg))));
+                Navigation.PushModalAsync(new NavigationPage(new EditPage(itemsOperator, itemsOperator.GetTGbuttonByTeg(ActiveButtonTeg), ActiveButtonTeg, IsRecursive)));
             }
         }
 

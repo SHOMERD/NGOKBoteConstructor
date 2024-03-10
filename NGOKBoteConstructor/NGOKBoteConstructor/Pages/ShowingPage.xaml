@@ -19,7 +19,10 @@
                             <StackLayout HorizontalOptions="Center">
                                 <Label x:Name="PerentObgect" Text="" VerticalTextAlignment="Center" />
                             </StackLayout>
-                            <Button Text="Изменить данную запись" Clicked="EditItem"/>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                                <Button Text="Изменить данную запись" Clicked="EditItem"/>
+                                <Button Text="Сохранить в файл" Clicked="SaveJson" />
+                            </StackLayout>
                         </StackLayout>
                     </Frame>
                 </StackLayout>
@@ -53,9 +56,11 @@
                                                              HorizontalOptions="Center"
                                                              >
                                                 <Button Text="Изменить данную запись" Clicked="EditItem"/>
+                                                <Button Text="Сохранить в файл" Clicked="SaveJson" />
                                                 <Button Text="Показать подменю" Clicked="ShowTGСhildMenu" />
                                                 <Button Text="Показать список подкнопок" Clicked="ShowRecursiveButtons" IsVisible="{Binding IsHasRebcursiveButtons}"/>
                                                 <Button Text="Удалить" Clicked="DeleteItemButton" />
+                                                
                                             
                                                 </StackLayout>
                                             </StackLayout>
@@ -69,7 +74,8 @@
                 </StackLayout>
                 <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Orientation="Horizontal">
                     <Button Text="Добавить Кнопку" Clicked="AddButton" />
-                    <Button Text="Сохранить" Clicked="SaveJson"/>
+                    <Button Text="Получить файл для отправления" Clicked="SaveJson"/>
+                    <Button Text="Сохранить" Clicked="Save"/>
                     <Button x:Name="BackButton" Text="\--" Clicked="ReteternPerentPage" IsVisible="false"/>
                         
                 </StackLayout>
