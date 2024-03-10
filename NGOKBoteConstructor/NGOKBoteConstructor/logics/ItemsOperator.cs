@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
 using System.IO;
+using Xamarin.Forms;
 
 namespace NGOKBoteConstructor.logics
 {
@@ -11,15 +12,56 @@ namespace NGOKBoteConstructor.logics
     {
         public TGButton TGMenu { get; set; }
 
-        public ItemsOperator() {
-            this.TGMenu = SheetMetob();
-        }
-
-
-        public ItemsOperator(string JsonMenu)
+        public ItemsOperator() 
         {
-            this.TGMenu = JsonConvert.DeserializeObject<TGButton>(JsonMenu);
+            this.TGMenu = TryGetSave();
         }
+
+
+
+        public TGButton TryGetSave()
+        {
+            try
+            {
+                string FileNameString = $"SaveStats.json";
+                string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+                TGButton tGButton = JsonConvert.DeserializeObject<TGButton>(File.ReadAllText(Path.Combine(folderPath, FileNameString)));
+                if (tGButton != null) 
+                {
+                    return tGButton;
+
+                }else
+                {
+                    return GetStartMenu();
+                }
+                
+
+
+            }
+            catch (Exception)
+            {
+                return GetStartMenu();
+            }
+
+        }
+
+
+        public TGButton GetStartMenu()
+        {
+            TGButton tGButton = new TGButton() { IsHasRebcursiveButtons = false,
+                Teg = "StartMenu",
+                Title = "StartMenu",
+                TextOfMenu = "Приветствую Вас! Я бот Новосибирского городского открытого колледжа, подскажите, а кем являетесь Вы?\r\n" };
+
+            tGButton.TGСhildMenu = new List<TGButton>();
+            tGButton.RecursiveButtons = new List<TGButton>();
+
+            return tGButton;
+        }
+
+
+
+
 
         public TGButton GetTGbuttonByTeg(string TegToFound, TGButton tGButton = null)
         {
@@ -70,14 +112,13 @@ namespace NGOKBoteConstructor.logics
 
 
 
-        public void CreaitJsonDoc()
+        public void SeveStats()
         {
-
-            string FileNameString = $"backup.json";
-            string FilePathString = $"A:\\Рабочий стол\\used\\";
+            string FileNameString = $"SaveStats.json";
             string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-
             File.WriteAllText(Path.Combine(folderPath, FileNameString), JsonConvert.SerializeObject(TGMenu));
+            App.Current.MainPage.DisplayAlert("Сохранено", "", "OK");
+
         }
             
 

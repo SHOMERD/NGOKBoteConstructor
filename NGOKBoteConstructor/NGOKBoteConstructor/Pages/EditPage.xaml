@@ -15,6 +15,20 @@
             <Editor AutoSize="TextChanges" x:Name="TextOfMenuEntery"/>
 
             <Label/>
+            <Label Text="Сылка кнопки"/>
+            <Entry x:Name="UriEntry"/>
+
+            <Label/>
+            <StackLayout >
+                <Label Text="Желаемое место кнопки"/>
+
+                <Picker Title="Select a monkey"
+                    TitleColor="Red" x:Name="PlacePicker"/>
+
+            </StackLayout>
+
+
+            <Label/>
             <StackLayout x:Name="TegIsSeteblede" IsEnabled="False">
                 <Label Text="Тег кнопки:"/>
                 <Entry x:Name="ItemTegEntry"/>
