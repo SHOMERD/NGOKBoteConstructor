@@ -20,7 +20,6 @@ namespace NGOKBoteConstructor.Models
         public bool IsHasRebcursiveButtons { get; set; }
         public List<TGButton> RecursiveButtons { get; set; } = new List<TGButton>();
 
-        public string Col { get; set; }
 
         public List<TGButton> TGСhildMenu { get; set; } = new List<TGButton>();
 

@@ -29,10 +29,13 @@ namespace NGOKBoteConstructor.Pages
             this.PerentTeg = PerentTeg;
             this.isRecursive = isRecursive;
 
+           
             this.TgButton = TgButton;
             TextOfMenuEntery.Text = TgButton.TextOfMenu;
             TitleEntery.Text = TgButton.Title;
             ItemTegEntry.Text = TgButton.Teg;
+            try { UriEntry.Text = TgButton.Url.ToString(); } catch (Exception) { }
+            
 
             List<int> ints = new List<int>();
             TGButton tGButton = itemsOperator.GetTGbuttonByTeg(PerentTeg);
@@ -112,15 +115,19 @@ namespace NGOKBoteConstructor.Pages
 
         public Uri ChekUrl(string Url)
         {
-            try
+            if (!string.IsNullOrEmpty(Url))
             {
-                return new Uri(Url);
+                try
+                {
+                    return new Uri(Url);
+                }
+                catch (Exception)
+                {
+                    App.Current.MainPage.DisplayAlert("Нельзя сохранить объект!", "Неправельно задана ссылка\nИзмените ссылку или удалите её. ", "ок");
+                    return null;
+                }
             }
-            catch (Exception)
-            {
-                App.Current.MainPage.DisplayAlert("Нельзя сохранить объект!", "Неправельно задана ссылка\nИзмените ссылку или удалите её. ", "ок");
-                return null;
-            }
+            return null;
         }
 
 
