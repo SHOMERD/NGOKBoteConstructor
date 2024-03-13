@@ -34,13 +34,9 @@ namespace NGOKBoteConstructor.Pages
             PerentTeg.Text = "Тег нажатой кнопки: " + tGButton.Teg;
             PerentObgect.Text = "Текст меню:\n" + tGButton.TextOfMenu;
             listViweData.ItemsSource = null;
-            if (IsRecursive) { 
-                listViweData.ItemsSource = tGButton.RecursiveButtons;
-            }
-            else 
-            {
-                listViweData.ItemsSource = tGButton.TGСhildMenu;                                                                                
-            }   
+            
+            listViweData.ItemsSource = tGButton.TGСhildMenu;                                                                                
+            
 
             if (itemsOperator.TGMenu.Teg == ActiveButtonTeg) 
             {
@@ -125,15 +121,9 @@ namespace NGOKBoteConstructor.Pages
 
         private async void AddButton(object sender, EventArgs e)
         {
-            TGButton tGButton = new TGButton() { Title = "новая кнопка"};
-            if (IsRecursive)
-            { 
-                (itemsOperator.GetTGbuttonByTeg(ActiveButtonTeg)).RecursiveButtons.Add(tGButton);
-            }
-            else
-            {
-                (itemsOperator.GetTGbuttonByTeg(ActiveButtonTeg)).TGСhildMenu.Add(tGButton);
-            }
+            TGButton tGButton = new TGButton() { Title = "новая кнопка"};          
+            (itemsOperator.GetTGbuttonByTeg(ActiveButtonTeg)).TGСhildMenu.Add(tGButton);
+            
             await Navigation.PushModalAsync(new NavigationPage(new EditPage(itemsOperator, itemsOperator.GetTGbuttonByTeg(null), ActiveButtonTeg, IsRecursive)));
             
         }

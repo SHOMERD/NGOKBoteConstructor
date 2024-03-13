@@ -40,22 +40,13 @@ namespace NGOKBoteConstructor.Pages
             List<int> ints = new List<int>();
             TGButton tGButton = itemsOperator.GetTGbuttonByTeg(PerentTeg);
 
-            if (isRecursive) { 
-
-                for (int i = 0; i < tGButton.RecursiveButtons.Count; i++)
-                {
-                    ints.Add(i+1);
-                }
-            }else
+            for (int i = 0; i < tGButton.TGСhildMenu.Count; i++)
             {
-                for (int i = 0; i < tGButton.TGСhildMenu.Count; i++)
-                {
-                    ints.Add(i + 1);
-                }
+                ints.Add(i + 1);
             }
 
             PlacePicker.ItemsSource = ints;
-            IsHasRebcursive.IsToggled = TgButton.IsHasRebcursiveButtons;
+            IsHasRebcursive.IsToggled = TgButton.IsRecursiveButton;
             TegIsSeteblede.IsEnabled = string.IsNullOrEmpty(TgButton.Teg);
 
 
@@ -87,7 +78,7 @@ namespace NGOKBoteConstructor.Pages
             {
                 TgButton.TextOfMenu = TextOfMenuEntery.Text;
                 TgButton.Title = TitleEntery.Text;
-                TgButton.IsHasRebcursiveButtons = IsHasRebcursive.IsToggled;
+                TgButton.IsRecursiveButton = IsHasRebcursive.IsToggled;
                 TgButton.Teg = ItemTegEntry.Text;
                 TgButton.Url = ChekUrl(UriEntry.Text);
 
@@ -99,8 +90,7 @@ namespace NGOKBoteConstructor.Pages
                     BuferButtot = TgButton;
                     itemsOperator.DeliteButton(TgButton, PerentTeg, isRecursive);
 
-                    if (isRecursive) { itemsOperator.GetTGbuttonByTeg(PerentTeg).RecursiveButtons.Insert(PlacePicker.SelectedIndex, BuferButtot); }
-                    else { itemsOperator.GetTGbuttonByTeg(PerentTeg).TGСhildMenu.Insert(PlacePicker.SelectedIndex, BuferButtot); }
+                    itemsOperator.GetTGbuttonByTeg(PerentTeg).TGСhildMenu.Insert(PlacePicker.SelectedIndex, BuferButtot); 
                     
                 }
                 Navigation.PopModalAsync();

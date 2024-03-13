@@ -37,7 +37,7 @@ namespace NGOKBoteConstructor.logics
 
             JsonString += $"\"{tGButton.Teg}\" ";
             JsonString += ": { ";
-            JsonString += $"\"Recursive\": {(tGButton.IsHasRebcursiveButtons.ToString()).ToLower()}, \"callbacks\": [";
+            JsonString += $"\"Recursive\": {(tGButton.IsRecursiveButton.ToString()).ToLower()}, \"callbacks\": [";
 
             for (int i = 0; i < tGButton.TGСhildMenu.Count; i++)
             {

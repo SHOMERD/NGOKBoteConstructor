@@ -3,6 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NGOKBoteConstructor.Pages.ShowingPage"
              >
+    <ContentPage.Resources>
+        <Style TargetType="Button">
+            <Setter Property="BackgroundColor" Value="DarkGray"/>
+        </Style>
+    </ContentPage.Resources>
 
         
     <ContentPage.Content>
@@ -11,7 +16,7 @@
                          >
             <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
                 <Button Text="Получить файл для отправления" Clicked="SaveJson"/>
-                <Button Text="Сохранить" Clicked="Save"/>
+                <Button Text="Сохранить" Clicked="Save" />
 
             </StackLayout>
                 
@@ -22,10 +27,12 @@
                         <StackLayout>
                             <Label x:Name="PerentTeg" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
                             <Label/>
-                            <Label/>
+
                             <StackLayout HorizontalOptions="Center">
                                 <Label x:Name="PerentObgect" Text="" VerticalTextAlignment="Center" />
                             </StackLayout>
+                            
+                            <Label/>
                             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                                 <Button Text="Изменить данную запись" Clicked="EditItem"/>
                             </StackLayout>
@@ -62,8 +69,7 @@
                                                              HorizontalOptions="Center"
                                                              >
                                                 <Button Text="Изменить данную запись" Clicked="EditItem"/>
-                                                <Button Text="Показать подменю" Clicked="ShowTGСhildMenu" />
-                                                <Button Text="Показать список подкнопок" Clicked="ShowRecursiveButtons" IsVisible="{Binding IsHasRebcursiveButtons}"/>
+                                                <Button Text="Показать подменю" Clicked="ShowTGСhildMenu"/>
                                                 <Button Text="Удалить" Clicked="DeleteItemButton" />
                                                 
                                             

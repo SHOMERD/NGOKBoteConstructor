@@ -48,13 +48,12 @@ namespace NGOKBoteConstructor.logics
 
         public TGButton GetStartMenu()
         {
-            TGButton tGButton = new TGButton() { IsHasRebcursiveButtons = false,
+            TGButton tGButton = new TGButton() { IsRecursiveButton = false,
                 Teg = "StartMenu",
                 Title = "StartMenu",
                 TextOfMenu = "Приветствую Вас! Я бот Новосибирского городского открытого колледжа, подскажите, а кем являетесь Вы?\r\n" };
 
             tGButton.TGСhildMenu = new List<TGButton>();
-            tGButton.RecursiveButtons = new List<TGButton>();
 
             return tGButton;
         }
@@ -82,14 +81,6 @@ namespace NGOKBoteConstructor.logics
                     if (tGButton1 != null) { return tGButton1; }
                 }
             }
-            if (tGButton.RecursiveButtons != null)
-            {
-                for (int i = 0; i < tGButton.RecursiveButtons.Count; i++)
-                {
-                    TGButton tGButton1 =  GetTGbuttonByTeg(TegToFound, tGButton.RecursiveButtons[i]);
-                    if (tGButton1 != null) { return tGButton1; }
-                }
-            }
             
 
             return null;
@@ -98,16 +89,9 @@ namespace NGOKBoteConstructor.logics
 
         public void DeliteButton(TGButton tgButtonToF, string PerentTeg, bool isRecursive)
         {
-            TGButton tgButton = GetTGbuttonByTeg(PerentTeg);
-            if (isRecursive) 
-            {
-                tgButton.RecursiveButtons.Remove(tgButtonToF);
-            }else
-            {
-                tgButton.TGСhildMenu.Remove(tgButtonToF);
-            }
-
-
+            TGButton tgButton = GetTGbuttonByTeg(PerentTeg);            
+            tgButton.TGСhildMenu.Remove(tgButtonToF);
+ 
         }
 
 
@@ -121,57 +105,6 @@ namespace NGOKBoteConstructor.logics
 
         }
             
-
-
-
-
-
-
-
-
-        public TGButton SheetMetob()
-        {
-            TGButton tGMenu = new TGButton() {IsHasRebcursiveButtons = false,  Teg = "StartMenu", Title = "StartMenu", TextOfMenu = "Приветствую Вас! Я бот Новосибирского городского открытого колледжа, подскажите, а кем являетесь Вы?\r\n" };
-            tGMenu.TGСhildMenu = new List<TGButton>();
-
-
-            tGMenu.TGСhildMenu.Add(new TGButton() { Teg = "sdg", Title = "фывапвфыапрвыф" });
-
-
-
-            tGMenu.TGСhildMenu.Add(new TGButton() { Teg = "sdg", Title = "ыврфварфвыарп" });
-            tGMenu.TGСhildMenu.Add(new TGButton()
-            {
-                Teg = "HasMenu",
-                Title = "HasMenu",
-                TextOfMenu = "dgdsfgd\nsagasdfgadsfgadf\nsdgsadgasdgasdfgasdg\nasrtgasdrg",
-                TGСhildMenu = new List<TGButton>{ new TGButton() { Teg = "sdsgsdwhgsehg" , Title = "sdsgsdwhgsehg"}, new TGButton() { Teg = "shshfgsh" , Title = "shshfgsh"}, new TGButton() { Teg = "xc myuik,ui", Title = "xc myuik,ui",
-                                                 TGСhildMenu = new List<TGButton>{new TGButton(){ Teg = "hsdgflkghja" , Title = "hsdgflkghja" } }
-                                             }
-                }
-            });
-            tGMenu.TGСhildMenu.Add(new TGButton() { Teg = "HasRebcursiveButtons", IsHasRebcursiveButtons = true, Title = "HasRebcursiveButtons",
-                RecursiveButtons = new List<TGButton>() { new TGButton() { Teg = "yl;i9o8" , Title = "yl;i9o8" }, new TGButton() { Teg = ",iy.,yui.," , Title = ",iy.,yui.," } }
-            });
-            tGMenu.TGСhildMenu.Add(new TGButton() { Teg = "ssdgdg", Title = "ssdgdg" });
-            tGMenu.TGСhildMenu.Add(new TGButton() { Teg = "sdfh" , Title = "sdfh" });
-            tGMenu.TGСhildMenu.Add(new TGButton() { Teg = "sdzg", Title = "sdzg" });
-            tGMenu.TGСhildMenu.Add(new TGButton() { Teg = "ssdfhdg" , Title = "ssdfhdg" });
-            tGMenu.TGСhildMenu.Add(new TGButton() { Teg = "sjntdzjdg" , Title = "sjntdzjdg" });
-            tGMenu.TGСhildMenu.Add(new TGButton() { Teg = "sdzbfdzg" , Title = "sdzbfdzg" });
-            tGMenu.TGСhildMenu.Add(new TGButton() { Teg = "szdg" , Title = "szdg" });
-            tGMenu.TGСhildMenu.Add(new TGButton() {   Teg = "szdtndg" , Title = "szdtndg" });
-            tGMenu.TGСhildMenu.Add(new TGButton() { Teg = "seragawregdg" , Title = "seragawregdg" });
-            tGMenu.TGСhildMenu.Add(new TGButton() { Teg = "sdzngfzg" , Title = "sdzngfzg" });
-
-            return tGMenu;
-        }
-
-
-
-
-
-
 
 
 
