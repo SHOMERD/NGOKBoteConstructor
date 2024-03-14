@@ -63,18 +63,8 @@ namespace NGOKBoteConstructor.Pages
 
         private void SaveJson(object sender, EventArgs e)
         {
-            TGButton tGButton = (TGButton)(sender as Xamarin.Forms.Button).BindingContext;
-
-            if (tGButton != null)
-            {
-                RecuestConsrtuktor.CreateJsonFile(itemsOperator.GetTGbuttonByTeg(tGButton.Teg));
-            }
-            else
-            {
-                RecuestConsrtuktor.CreateJsonFile(itemsOperator.GetTGbuttonByTeg(ActiveButtonTeg));
-            }
-            
-
+            RecuestConsrtuktor.CreateJsonFile(itemsOperator.TGMenu);
+           
         }
 
         private void Save(object sender, EventArgs e)
