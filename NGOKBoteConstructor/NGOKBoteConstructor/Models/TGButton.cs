@@ -14,6 +14,7 @@ namespace NGOKBoteConstructor.Models
 
         public String TextOfMenu { get; set; }
 
+        public bool HasUrl { get; set; }
         public Uri Url { get; set; }
 
         public bool IsRecursiveButton { get; set; }

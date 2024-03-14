@@ -57,7 +57,7 @@ namespace NGOKBoteConstructor.Pages
 
         private void DeleteItemButton(object sender, EventArgs e)
         {
-            itemsOperator.DeliteButton((TGButton)(sender as Xamarin.Forms.Button).BindingContext, ActiveButtonTeg, IsRecursive);
+            itemsOperator.DeliteButton((TGButton)(sender as Xamarin.Forms.Button).BindingContext, ActiveButtonTeg);
             OnAppearing();
         }
 
@@ -69,7 +69,10 @@ namespace NGOKBoteConstructor.Pages
 
         private void Save(object sender, EventArgs e)
         {
-            itemsOperator.SeveStats();
+            if (itemsOperator.SeveStats())
+            {
+                App.Current.MainPage.DisplayAlert("Сохранено", "", "OK");
+            }
 
         }
 
@@ -101,11 +104,11 @@ namespace NGOKBoteConstructor.Pages
             TGButton tGButton = (TGButton)(sender as Xamarin.Forms.Button).BindingContext;
             if (tGButton != null)
             {
-                Navigation.PushModalAsync(new NavigationPage(new EditPage(itemsOperator, itemsOperator.GetTGbuttonByTeg(tGButton.Teg), ActiveButtonTeg, IsRecursive)));
+                Navigation.PushModalAsync(new NavigationPage(new EditPage(itemsOperator, itemsOperator.GetTGbuttonByTeg(tGButton.Teg), ActiveButtonTeg)));
             }
             else
             {
-                Navigation.PushModalAsync(new NavigationPage(new EditPage(itemsOperator, itemsOperator.GetTGbuttonByTeg(ActiveButtonTeg), ActiveButtonTeg, IsRecursive)));
+                Navigation.PushModalAsync(new NavigationPage(new EditPage(itemsOperator, itemsOperator.GetTGbuttonByTeg(ActiveButtonTeg), ActiveButtonTeg)));
             }
         }
 

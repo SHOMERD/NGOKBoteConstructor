@@ -1,8 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="NGOKBoteConstructor.Pages.EditPage">
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <xct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    
 
     <ContentPage.Content >
         <StackLayout >
@@ -10,16 +18,28 @@
             <Label/>
             <Label Text="Текст на кнопке:"/>
             <Entry x:Name="TitleEntery"/>
+            <Label/>
 
-            <Label Text="Текст подменю:"/>
-            <Editor AutoSize="TextChanges" x:Name="TextOfMenuEntery"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Label Text="Кнопка с переходом по ссылке" VerticalOptions="CenterAndExpand"/>
+                <Switch  x:Name="WithUrl"/>
+            </StackLayout>
 
             <Label/>
-            <StackLayout x:Name="UriEntryVisibliliti">
+
+            <StackLayout IsVisible="{Binding Source={x:Reference WithUrl}, Path=IsToggled, Converter={StaticResource InvertedBoolConverter}}"> 
+                <Label Text="Текст подменю:"/>
+                <Editor AutoSize="TextChanges" x:Name="TextOfMenuEntery"/>
+            </StackLayout>
+            
+            
+            
+            <StackLayout IsVisible="{Binding Source={x:Reference WithUrl}, Path=IsToggled}">
                 <Label Text="Сылка кнопки"/>
                 <Entry x:Name="UriEntry"/>  
             </StackLayout>
 
+            
             <Label/>
             <StackLayout >
                 <Label Text="Желаемое место кнопки"/>
@@ -35,7 +55,10 @@
 
            
             <Label/>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+            <StackLayout x:Name="RebcursiveSwitchBlov"  
+                         Orientation="Horizontal" HorizontalOptions="FillAndExpand"
+                         IsVisible="{Binding Source={x:Reference WithUrl}, Path=IsToggled, Converter={StaticResource InvertedBoolConverter}}">
+                
                 <Label Text="Кнопка рекурсивная" VerticalOptions="CenterAndExpand"/>
                 <Switch  x:Name="IsHasRebcursive" />
             </StackLayout>

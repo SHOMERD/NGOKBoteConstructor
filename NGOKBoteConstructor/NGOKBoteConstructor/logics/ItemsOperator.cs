@@ -51,6 +51,7 @@ namespace NGOKBoteConstructor.logics
             TGButton tGButton = new TGButton() { IsRecursiveButton = false,
                 Teg = "StartMenu",
                 Title = "StartMenu",
+                HasUrl = false,
                 TextOfMenu = "Приветствую Вас! Я бот Новосибирского городского открытого колледжа, подскажите, а кем являетесь Вы?\r\n" };
 
             tGButton.TGСhildMenu = new List<TGButton>();
@@ -87,7 +88,7 @@ namespace NGOKBoteConstructor.logics
             
         }
 
-        public void DeliteButton(TGButton tgButtonToF, string PerentTeg, bool isRecursive)
+        public void DeliteButton(TGButton tgButtonToF, string PerentTeg)
         {
             TGButton tgButton = GetTGbuttonByTeg(PerentTeg);            
             tgButton.TGСhildMenu.Remove(tgButtonToF);
@@ -96,13 +97,12 @@ namespace NGOKBoteConstructor.logics
 
 
 
-        public void SeveStats()
+        public bool SeveStats()
         {
             string FileNameString = $"SaveStats.json";
             string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             File.WriteAllText(Path.Combine(folderPath, FileNameString), JsonConvert.SerializeObject(TGMenu));
-            App.Current.MainPage.DisplayAlert("Сохранено", "", "OK");
-
+            return true;
         }
             
 

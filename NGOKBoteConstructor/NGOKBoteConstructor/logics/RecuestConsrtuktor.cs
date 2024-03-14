@@ -32,7 +32,7 @@ namespace NGOKBoteConstructor.logics
 
         static string CreateJsonString(TGButton tGButton)
         {
-            if (tGButton.Url != null)
+            if (tGButton.HasUrl)
             {
                 return null;
             }
@@ -78,13 +78,6 @@ namespace NGOKBoteConstructor.logics
                 if (tGButton.TGСhildMenu[i].TGСhildMenu.Count == 0)
                 {
                     JsonString += "null";
-                }
-                else if (tGButton.TGСhildMenu[i].TGСhildMenu.Count == 1)
-                {
-                    JsonString += "[ ";
-                    JsonString += $"{JsonConvert.SerializeObject(tGButton.TGСhildMenu[i].TGСhildMenu[0].Title)}, ";
-                    JsonString += $"{JsonConvert.SerializeObject(tGButton.TGСhildMenu[i].TGСhildMenu[0].Url)} ";
-                    JsonString += "]";
                 }
                 else
                 {
@@ -139,7 +132,6 @@ namespace NGOKBoteConstructor.logics
             }
             
 
-
             for (int D = 0; D < tGButton.TGСhildMenu.Count; D++)
             {
                 if (tGButton.TGСhildMenu[D].Url == null)
@@ -147,7 +139,6 @@ namespace NGOKBoteConstructor.logics
                     JsonString += CreateJsonString23(tGButton.TGСhildMenu[D]);
                 }
             }
-
 
 
             return JsonString;
