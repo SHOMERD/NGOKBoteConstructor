@@ -89,7 +89,7 @@
                 </StackLayout>
                 <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Orientation="Horizontal">
                     <Button Text="Добавить Кнопку" Clicked="AddButton" />
-                    <Button x:Name="BackButton" Text="\--" Clicked="ReteternPerentPage" IsVisible="false"/>
+                    <Button x:Name="BackButton" Text="ᐸ--" Clicked="ReteternPerentPage" IsVisible="false"/>
                         
                 </StackLayout>
             <Label/>

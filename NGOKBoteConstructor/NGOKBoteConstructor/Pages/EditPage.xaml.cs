@@ -20,6 +20,7 @@ namespace NGOKBoteConstructor.Pages
         ItemsOperator itemsOperator;
         string PerentTeg { get; set; }
         bool isRecursive {  get; set; }
+        bool isNew { get; set; }
 
         public EditPage(ItemsOperator itemsOperator, TGButton TgButton, string PerentTeg = null, bool isRecursive = false)
         {
@@ -28,7 +29,17 @@ namespace NGOKBoteConstructor.Pages
             this.itemsOperator = itemsOperator;
             this.PerentTeg = PerentTeg;
             this.isRecursive = isRecursive;
-            this.TgButton = TgButton;
+            if (TgButton == null) 
+            {
+                isNew = true;
+                this.TgButton = new TGButton() { Title = "новая кнопка" };  
+            }
+            else 
+            {
+                isNew = false;
+                this.TgButton = TgButton; 
+            }
+            
             SetContext();
         }
 
@@ -116,7 +127,7 @@ namespace NGOKBoteConstructor.Pages
         {
             if (ChekPossibilityToSave())
             {
-                itemsOperator.SeveStats();
+                
 
                 TgButton.TextOfMenu = TextOfMenuEntery.Text;
                 TgButton.Teg = ItemTegEntry.Text;
@@ -125,7 +136,12 @@ namespace NGOKBoteConstructor.Pages
                 TgButton.Title = TitleEntery.Text;
                 TgButton.IsRecursiveButton = IsHasRebcursive.IsToggled;
                 
-                TgButton.Url = ChekUrl(UriEntry.Text); 
+                TgButton.Url = ChekUrl(UriEntry.Text);
+                if (isNew)
+                {
+                    itemsOperator.GetTGbuttonByTeg(PerentTeg).TGСhildMenu.Add(TgButton);
+                }
+
 
                 if (PlacePicker.SelectedIndex != -1)
                 {
@@ -134,9 +150,11 @@ namespace NGOKBoteConstructor.Pages
                     BuferButtot = TgButton;
                     itemsOperator.DeliteButton(TgButton, PerentTeg);
 
-                    itemsOperator.GetTGbuttonByTeg(PerentTeg).TGСhildMenu.Insert(PlacePicker.SelectedIndex, BuferButtot); 
-                    
+                    itemsOperator.GetTGbuttonByTeg(PerentTeg).TGСhildMenu.Insert(PlacePicker.SelectedIndex, BuferButtot);
                 }
+
+
+                itemsOperator.SeveStats();
                 Navigation.PopModalAsync();
                 
             }
@@ -162,10 +180,6 @@ namespace NGOKBoteConstructor.Pages
 
         private void CancelChanges(object sender, EventArgs e)
         { 
-            if (!ChekPossibilityToSave())
-            {
-                itemsOperator.DeliteButton(TgButton, PerentTeg);
-            }
             Navigation.PopModalAsync();
         }
     }

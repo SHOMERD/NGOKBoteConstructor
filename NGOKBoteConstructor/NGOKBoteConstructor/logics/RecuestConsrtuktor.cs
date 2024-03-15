@@ -4,28 +4,37 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
 
 namespace NGOKBoteConstructor.logics
 {
     public class RecuestConsrtuktor
     {
 
-        public static void CreateJsonFile(TGButton tGButton)
+        public static async void CreateJsonFile(TGButton tGButton)
         {
-            Application.Current.MainPage.DisplayAlert("Файл сохрнен", $"Файл: {CreateFile(CreateJsonString2(tGButton))}", "ок");
+            string jsonPosition = CreateFile(CreateJsonString2(tGButton));
+            if (await Application.Current.MainPage.DisplayAlert("Файл сохрнен", $"\tПуть к файлу:\n{jsonPosition}  \n\tФайл:\nNGOKBoteStructure.json", "Скапировать расположение файла", "ок"))
+            {
+                await Clipboard.SetTextAsync(jsonPosition);
+            }
+            
+
 
         }
 
 
         static string CreateFile(string JsonString)
         {
-
-            string FileNameString = $"waiwai.json";
+            string FileNameString = $"NGOKBoteStructure.json";
+   
             string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 
             File.WriteAllText(Path.Combine(folderPath, FileNameString), JsonString);
-            return folderPath + "\\" + FileNameString;
+            return folderPath;
+    
         }
 
 

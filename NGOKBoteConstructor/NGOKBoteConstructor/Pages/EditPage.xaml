@@ -13,11 +13,13 @@
     
 
     <ContentPage.Content >
+
+        <ScrollView>
         <StackLayout >
 
             <Label/>
             <Label Text="Текст на кнопке:"/>
-            <Entry x:Name="TitleEntery"/>
+            <Entry x:Name="TitleEntery" MaxLength="30"/>
             <Label/>
 
             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
@@ -29,7 +31,7 @@
 
             <StackLayout IsVisible="{Binding Source={x:Reference WithUrl}, Path=IsToggled, Converter={StaticResource InvertedBoolConverter}}"> 
                 <Label Text="Текст подменю:"/>
-                <Editor AutoSize="TextChanges" x:Name="TextOfMenuEntery"/>
+                <Editor AutoSize="TextChanges" x:Name="TextOfMenuEntery" MaxLength="3500"/>
             </StackLayout>
             
             
@@ -50,7 +52,7 @@
             <Label/>
             <StackLayout x:Name="TegIsSeteblede" IsEnabled="False">
                 <Label Text="Тег кнопки:"/>
-                <Entry x:Name="ItemTegEntry"/>
+                    <Entry x:Name="ItemTegEntry" MaxLength="30"/>
             </StackLayout>
 
            
@@ -76,5 +78,6 @@
 
             
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

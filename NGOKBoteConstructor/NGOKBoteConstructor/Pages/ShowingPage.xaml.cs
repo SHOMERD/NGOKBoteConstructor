@@ -61,11 +61,15 @@ namespace NGOKBoteConstructor.Pages
             OnAppearing();
         }
 
+
+
         private void SaveJson(object sender, EventArgs e)
         {
             RecuestConsrtuktor.CreateJsonFile(itemsOperator.TGMenu);
            
         }
+
+
 
         private void Save(object sender, EventArgs e)
         {
@@ -114,10 +118,7 @@ namespace NGOKBoteConstructor.Pages
 
         private async void AddButton(object sender, EventArgs e)
         {
-            TGButton tGButton = new TGButton() { Title = "новая кнопка"};          
-            (itemsOperator.GetTGbuttonByTeg(ActiveButtonTeg)).TGСhildMenu.Add(tGButton);
-            
-            await Navigation.PushModalAsync(new NavigationPage(new EditPage(itemsOperator, itemsOperator.GetTGbuttonByTeg(null), ActiveButtonTeg, IsRecursive)));
+            await Navigation.PushModalAsync(new NavigationPage(new EditPage(itemsOperator, null, ActiveButtonTeg)));
             
         }
 

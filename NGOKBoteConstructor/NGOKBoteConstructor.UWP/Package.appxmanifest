@@ -14,7 +14,7 @@
   <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>NGOKBoteConstructor.UWP</DisplayName>
+    <DisplayName>NGOKBoteConstructor</DisplayName>
     <PublisherDisplayName>6657BE26-804E-4F9F-90FA-CBF102D54CF7</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -32,7 +32,7 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="NGOKBoteConstructor.UWP.App">
       <uap:VisualElements
-        DisplayName="NGOKBoteConstructor.UWP"
+        DisplayName="NGOKBoteConstructor"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
         Description="NGOKBoteConstructor.UWP"
@@ -48,8 +48,4 @@
       </uap:VisualElements>
     </Application>
   </Applications>
-
-  <Capabilities>
-    <Capability Name="internetClient" />
-  </Capabilities>
 </Package>
