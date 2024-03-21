@@ -48,7 +48,7 @@ namespace NGOKBoteConstructor.logics
 
         public TGButton GetStartMenu()
         {
-            TGButton tGButton = new TGButton() { IsRecursiveButton = false,
+            TGButton tGButton = new TGButton() {
                 Teg = "StartMenu",
                 Title = "StartMenu",
                 HasUrl = false,

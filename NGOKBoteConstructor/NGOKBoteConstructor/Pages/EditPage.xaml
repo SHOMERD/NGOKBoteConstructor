@@ -37,7 +37,7 @@
             
             
             <StackLayout IsVisible="{Binding Source={x:Reference WithUrl}, Path=IsToggled}">
-                <Label Text="Сылка кнопки"/>
+                <Label Text="Ссылка  кнопки"/>
                 <Entry x:Name="UriEntry"/>  
             </StackLayout>
 
@@ -55,15 +55,6 @@
                     <Entry x:Name="ItemTegEntry" MaxLength="30"/>
             </StackLayout>
 
-           
-            <Label/>
-            <StackLayout x:Name="RebcursiveSwitchBlov"  
-                         Orientation="Horizontal" HorizontalOptions="FillAndExpand"
-                         IsVisible="{Binding Source={x:Reference WithUrl}, Path=IsToggled, Converter={StaticResource InvertedBoolConverter}}">
-                
-                <Label Text="Кнопка рекурсивная" VerticalOptions="CenterAndExpand"/>
-                <Switch  x:Name="IsHasRebcursive" />
-            </StackLayout>
 
 
             <Label/>

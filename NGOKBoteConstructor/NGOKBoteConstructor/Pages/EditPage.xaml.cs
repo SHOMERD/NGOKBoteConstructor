@@ -32,7 +32,7 @@ namespace NGOKBoteConstructor.Pages
             if (TgButton == null) 
             {
                 isNew = true;
-                this.TgButton = new TGButton() { Title = "новая кнопка" };  
+                this.TgButton = new TGButton() { Title = "Новая кнопка" };  
             }
             else 
             {
@@ -51,7 +51,6 @@ namespace NGOKBoteConstructor.Pages
                 TitleEntery.IsReadOnly = true;
                 UriEntry.IsVisible = false;
                 PlacePicker.IsVisible = false;
-                RebcursiveSwitchBlov.IsVisible = false;
             }
 
             WithUrl.IsToggled = TgButton.HasUrl;
@@ -70,7 +69,6 @@ namespace NGOKBoteConstructor.Pages
             }
 
             PlacePicker.ItemsSource = ints;
-            IsHasRebcursive.IsToggled = TgButton.IsRecursiveButton;
             TegIsSeteblede.IsEnabled = string.IsNullOrEmpty(TgButton.Teg);
 
         }
@@ -89,7 +87,7 @@ namespace NGOKBoteConstructor.Pages
             {
                 if(ChekUrl(UriEntry.Text) == null)
                 {
-                    App.Current.MainPage.DisplayAlert("Нельзя сохранить объект!", "Неправельно задана ссылка\nИзмените ссылку или удалите её. ", "ок");
+                    App.Current.MainPage.DisplayAlert("Нельзя сохранить объект!", "Неправильно задана ссылка\nИзмените ссылку или удалите её. ", "ок");
                     return false;
                 }
             }
@@ -97,7 +95,7 @@ namespace NGOKBoteConstructor.Pages
             {
                 if (string.IsNullOrEmpty(TextOfMenuEntery.Text))
                 {
-                    App.Current.MainPage.DisplayAlert("Нельзя сохранить объект!", "Не задан текст меню открываемого по кнопке", "ок");
+                    App.Current.MainPage.DisplayAlert("Нельзя сохранить объект!", "Не задан текст меню, открываемого по кнопке", "ок");
                     return false;
                 }
             }
@@ -131,10 +129,11 @@ namespace NGOKBoteConstructor.Pages
 
                 TgButton.TextOfMenu = TextOfMenuEntery.Text;
                 TgButton.Teg = ItemTegEntry.Text;
+                TgButton.ParentTeg = PerentTeg;
                 TgButton.HasUrl = WithUrl.IsToggled;
 
                 TgButton.Title = TitleEntery.Text;
-                TgButton.IsRecursiveButton = IsHasRebcursive.IsToggled;
+
                 
                 TgButton.Url = ChekUrl(UriEntry.Text);
                 if (isNew)
