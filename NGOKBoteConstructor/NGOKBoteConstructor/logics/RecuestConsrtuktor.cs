@@ -15,8 +15,8 @@ namespace NGOKBoteConstructor.logics
 
         public static async void CreateJsonFile(TGButton tGButton)
         {
-            string jsonPosition = CreateFile(CreateJsonString2(tGButton));
-            if (await Application.Current.MainPage.DisplayAlert("Файл сохрнен", $"\tПуть к файлу:\n{jsonPosition}  \n\tФайл:\nNGOKBoteStructure.json", "Скапировать расположение файла", "ок"))
+            string jsonPosition = CreateFile(CreateJsonString(tGButton));
+            if (await Application.Current.MainPage.DisplayAlert("Файл сохранен", $"\tПуть к файлу:\n{jsonPosition}  \n\tФайл:\nNGOKBoteStructure.json", "Скопировать расположение файла", "ок"))
             {
                 await Clipboard.SetTextAsync(jsonPosition);
             }
@@ -39,128 +39,67 @@ namespace NGOKBoteConstructor.logics
 
 
 
-        static string CreateJsonString(TGButton tGButton)
+        static string GetTGButtonJsonString(TGButton tGButton)
         {
             if (tGButton.HasUrl)
             {
-                return null;
+                return "";
             }
 
             string JsonString = "";
 
+
             JsonString += $"{JsonConvert.SerializeObject(tGButton.Teg)} ";
-            JsonString += ": { ";
-            JsonString += $"\"Recursive\": {(tGButton.IsRecursiveButton.ToString()).ToLower()}, \"callbacks\": [";
-
-            for (int i = 0; i < tGButton.TGСhildMenu.Count; i++)
-            {
-                JsonString += $"{JsonConvert.SerializeObject(tGButton.TGСhildMenu[i].Teg)}";
-                if (i != tGButton.TGСhildMenu.Count - 1)
-                {
-                    JsonString += ",";
-                }
-            }
-
-            JsonString += "],";
-
-            
-
-            JsonString += "\"ButtonName\": [ ";
-
-            for (int i = 0; i < tGButton.TGСhildMenu.Count; i++)
-            {
-                JsonString += $"{JsonConvert.SerializeObject(tGButton.TGСhildMenu[i].Title)}";
-                if (i != tGButton.TGСhildMenu.Count - 1)
-                {
-                    JsonString += ",";
-                }
-            }
-            JsonString += "],";
-
-
-
-            JsonString += "\"Additional_Buttons\" : {";
-
-            for (int i = 0; i < tGButton.TGСhildMenu.Count; i++)
-            {
-                JsonString += $"{JsonConvert.SerializeObject(tGButton.TGСhildMenu[i].Teg)} : ";
-                if (tGButton.TGСhildMenu[i].TGСhildMenu.Count == 0)
-                {
-                    JsonString += "null";
-                }
-                else
-                {
-                    JsonString += "[ ";
-                    for (int l = 0; l < tGButton.TGСhildMenu[i].TGСhildMenu.Count; l++)
-                    {
-                        JsonString += "[ ";
-                        JsonString += $"{JsonConvert.SerializeObject(tGButton.TGСhildMenu[i].TGСhildMenu[l].Title)}, ";
-                        JsonString += $"{JsonConvert.SerializeObject(tGButton.TGСhildMenu[i].TGСhildMenu[l].Url)} ";
-                        JsonString += "]";
-                        if (l != tGButton.TGСhildMenu[i].TGСhildMenu.Count - 1)
-                        {
-                            JsonString += ",";
-                        }
-
-                    }
-                    JsonString += "]";
-                }
-                if (i != tGButton.TGСhildMenu.Count - 1)
-                {
-                    JsonString += ", ";
-                }
-            }
-            JsonString += "}, ";
-            JsonString += "\"Text\": { ";
-            for (int i = 0; i < tGButton.TGСhildMenu.Count; i++)
-            {
-                JsonString += $"{JsonConvert.SerializeObject(tGButton.TGСhildMenu[i].Teg)}: ";
-                JsonString += JsonConvert.SerializeObject(tGButton.TGСhildMenu[i].TextOfMenu);
-                if (i != tGButton.TGСhildMenu.Count - 1)
-                {
-                    JsonString += ", ";
-                }
-            }
-            JsonString += "}  },";
-
+            JsonString += ": {";
+            JsonString += $"\"Parent\" : ";
+            JsonString += $"{JsonConvert.SerializeObject(tGButton.ParentTeg)} , ";
+            JsonString += $"\"Text\" : {JsonConvert.SerializeObject(tGButton.TextOfMenu)}, ";
+            JsonString += "\"Buttons\" : ";
+            JsonString += GetСhildButtonsSting(tGButton, false);
+            JsonString += ", ";
+            JsonString += "\"urlButtons\" : ";
+            JsonString += GetСhildButtonsSting(tGButton, true);
+            JsonString += " ";
+            JsonString += " },";
 
             return JsonString;
 
 
         }
 
-        static string CreateJsonString23(TGButton tGButton)
+        static string GetJsonStringRercursive(TGButton tGButton)
         {
             string JsonString = "";
-            string d = CreateJsonString(tGButton);
+            string d = GetTGButtonJsonString(tGButton);
             if (d != null)
             {
                 JsonString += "\n";
                 JsonString += d;
                 JsonString += "\n";
             }
-            
 
-            for (int D = 0; D < tGButton.TGСhildMenu.Count; D++)
+
+            for (int i = 0; i < tGButton.TGСhildMenu.Count; i++)
             {
-                if (tGButton.TGСhildMenu[D].Url == null)
+                if (!tGButton.TGСhildMenu[i].HasUrl)
                 {
-                    JsonString += CreateJsonString23(tGButton.TGСhildMenu[D]);
+                    JsonString += GetJsonStringRercursive(tGButton.TGСhildMenu[i]);
                 }
             }
 
-
             return JsonString;
-
-
-
         }
 
-        static string CreateJsonString2(TGButton tGButton)
+
+
+        static string CreateJsonString(TGButton tGButton)
         {
             string JsonString = "";
             JsonString += "{ ";
-            JsonString += CreateJsonString23(tGButton);
+           
+            JsonString += GetJsonStringRercursive(tGButton);
+
+
             JsonString = JsonString.Substring(0, JsonString.Length-2);
             JsonString += "\n";
             JsonString += "} ";
@@ -171,6 +110,48 @@ namespace NGOKBoteConstructor.logics
 
 
 
+        }
+
+        static string GetСhildButtonsSting(TGButton tGButton, bool GetUrl)
+        {
+            string JsonString = "";
+            List<TGButton> tGButtons = new List<TGButton>();
+            for (int i = 0; i < tGButton.TGСhildMenu.Count; i++)
+            {
+                if (tGButton.TGСhildMenu[i].HasUrl == GetUrl)
+                {
+                    tGButtons.Add(tGButton.TGСhildMenu[i]);
+                }
+            }
+            
+
+
+            if (tGButtons.Count == 0)
+            {
+                JsonString += "null";
+            }
+            else
+            {
+                JsonString += "{ ";
+                for (int i = 0; i < tGButtons.Count; i++)
+                {
+                   
+                    if (!GetUrl)
+                    {
+                        JsonString += $"\"{tGButtons[i].Teg}\" ";
+                    }else
+                    {
+                        JsonString += $"\"{tGButtons[i].Url}\" ";
+                    }
+                    JsonString += $": \"{tGButtons[i].Title}\"";                    
+                    if (i != tGButtons.Count - 1)
+                    {
+                        JsonString += ", ";
+                    }
+                }
+                JsonString += "} ";
+            }
+            return JsonString;
         }
 
     }
