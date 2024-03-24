@@ -32,6 +32,7 @@ namespace NGOKBoteConstructor.Pages
 
             TGButton tGButton = itemsOperator.GetTGbuttonByTeg(ActiveButtonTeg);
             PerentTeg.Text = "Тег нажатой кнопки: " + tGButton.Teg;
+            PerentButtonTeg.Text = "Надпись на нажатой кнопке: " + tGButton.Title;
             PerentObgect.Text = "Текст меню:\n" + tGButton.TextOfMenu;
             listViweData.ItemsSource = null;
             

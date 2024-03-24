@@ -5,6 +5,7 @@ using System.Text;
 using Newtonsoft.Json;
 using System.IO;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 
 namespace NGOKBoteConstructor.logics
 {
@@ -105,6 +106,57 @@ namespace NGOKBoteConstructor.logics
             return true;
         }
             
+        public int GetMaxTeg(TGButton tGButton = null, int Max = 0)
+        {
+            if (tGButton == null)
+            {
+                tGButton = TGMenu;
+                Max = TGMenu.IntTeg;
+            }
+            for (int i = 0; i < tGButton.TGСhildMenu.Count; i++)
+            {
+                Max = GetMaxTeg(tGButton.TGСhildMenu[i], Max);
+            }
+            if (tGButton.IntTeg >= Max)
+            {
+                Max = tGButton.IntTeg;
+            }
+            return Max;
+        }
+
+        public List<int> GetEmptyTegs(TGButton tGButton = null, List<int> ints = null)
+        {
+            if(tGButton == null)
+            {
+                tGButton = TGMenu;
+                ints = new List<int>();
+                for (int i = 0; i < GetMaxTeg()+1; i++)
+                {
+                    ints.Add(i);
+                }
+            }
+            for (int i = 0; i < tGButton.TGСhildMenu.Count; i++)
+            {
+                GetEmptyTegs(tGButton.TGСhildMenu[i], ints);
+            }
+            ints.Remove(tGButton.IntTeg);
+
+            return ints;
+        }
+
+        public int GetEmptyTeg()
+        {
+            List<int> ints = GetEmptyTegs();
+            if (ints.Count == 0)
+            {
+                return GetMaxTeg()+1;
+            }
+            else
+            {
+                return ints[0];
+            }
+            
+        }
 
 
 

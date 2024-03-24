@@ -52,7 +52,7 @@
             <Label/>
             <StackLayout x:Name="TegIsSeteblede" IsEnabled="False">
                 <Label Text="Тег кнопки:"/>
-                    <Entry x:Name="ItemTegEntry" MaxLength="30"/>
+                    <Label x:Name="ItemTegEntry"/>
             </StackLayout>
 
 

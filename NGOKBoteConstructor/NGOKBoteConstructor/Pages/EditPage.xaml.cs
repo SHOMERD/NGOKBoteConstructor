@@ -100,22 +100,6 @@ namespace NGOKBoteConstructor.Pages
                 }
             }
 
-            if (string.IsNullOrEmpty(TgButton.Teg))
-            {
-                if (!string.IsNullOrEmpty(ItemTegEntry.Text))
-                {
-                    if ((itemsOperator.GetTGbuttonByTeg(ItemTegEntry.Text) != null))
-                    {
-                        App.Current.MainPage.DisplayAlert("Нельзя сохранить объект!", "Неправильно задан тег", "ок");
-                        return false;
-                    }
-                }else 
-                {
-                    App.Current.MainPage.DisplayAlert("Нельзя сохранить объект!", "Неправильно задан тег", "ок");
-                    return false; 
-                }
-            }
-
             return true;
         }
 
@@ -128,7 +112,7 @@ namespace NGOKBoteConstructor.Pages
                 
 
                 TgButton.TextOfMenu = TextOfMenuEntery.Text;
-                TgButton.Teg = ItemTegEntry.Text;
+                 
                 TgButton.ParentTeg = PerentTeg;
                 TgButton.HasUrl = WithUrl.IsToggled;
 
@@ -138,6 +122,9 @@ namespace NGOKBoteConstructor.Pages
                 TgButton.Url = ChekUrl(UriEntry.Text);
                 if (isNew)
                 {
+                    int t =  itemsOperator.GetEmptyTeg();
+                    TgButton.IntTeg = t;
+                    TgButton.Teg = SetTeg(t);
                     itemsOperator.GetTGbuttonByTeg(PerentTeg).TGСhildMenu.Add(TgButton);
                 }
 
@@ -180,6 +167,30 @@ namespace NGOKBoteConstructor.Pages
         private void CancelChanges(object sender, EventArgs e)
         { 
             Navigation.PopModalAsync();
+        }
+
+        public string SetTeg(int t)
+        {
+            string letters = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ";
+            long del = t;
+            List<long> list = new List<long>();
+            while (del > 51)
+            {
+                list.Add(del % 51);
+                del = del / 51;
+            }
+            list.Add(del);
+            long[] ints = new long[3] { 0, 0, 0 };
+            for (int i = 0; i < ints.Length; i++)
+            {
+                try
+                {
+                    ints[i] = list[i];
+                }
+                catch (Exception e) { }
+            }
+            string a = "" + letters[(int)ints[2]] + letters[(int)ints[1]] + letters[(int)ints[0]];
+            return a;
         }
     }
 }

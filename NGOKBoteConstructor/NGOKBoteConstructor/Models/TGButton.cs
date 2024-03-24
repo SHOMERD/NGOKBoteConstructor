@@ -8,8 +8,10 @@ namespace NGOKBoteConstructor.Models
     public class TGButton
     {
         public string Teg { get; set; }
+        public int IntTeg { get; set; }
 
         public string ParentTeg { get; set; }
+
         public string Title { get; set; }
         public String TextOfMenu { get; set; }
 

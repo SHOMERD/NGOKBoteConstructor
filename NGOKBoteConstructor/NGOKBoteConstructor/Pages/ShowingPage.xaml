@@ -29,10 +29,12 @@
                 <StackLayout  x:Name="TextOfMenu">
                     <Frame BorderColor="Gray">
                         <StackLayout>
-                            <Label x:Name="PerentTeg" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
-                            <Label/>
 
-                            <StackLayout HorizontalOptions="Center">
+                            <Label x:Name="PerentTeg" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                            <Label x:Name="PerentButtonTeg" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                        
+
+                        <StackLayout HorizontalOptions="Center">
                                 <Label x:Name="PerentObgect" Text="" VerticalTextAlignment="Center" />
                             </StackLayout>
                             
