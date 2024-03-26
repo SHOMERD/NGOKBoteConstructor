@@ -18,82 +18,91 @@
             <StackLayout Orientation="Vertical"
                          VerticalOptions="StartAndExpand" 
                          >
-            <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
-                <Button Text="Получить файл для отправления" Clicked="SaveJson"/>
-                <Button Text="Сохранить" Clicked="Save" />
 
-            </StackLayout>
+
+                    <StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+                    <Button Text="Получить файл для отправления" Clicked="SaveJson"/>
+                    <Button Text="Сохранить" Clicked="Save" />
+                    <Button Text="Загрузить структуру из файла" Clicked="TrySetStats"/>
                 
-                
+                </StackLayout>
+
+</StackLayout>
+
+            <ScrollView>
                 <StackLayout>
-                <StackLayout  x:Name="TextOfMenu">
-                    <Frame BorderColor="Gray">
-                        <StackLayout>
+                    <StackLayout>
+                        <StackLayout  x:Name="TextOfMenu">
+                            <Frame BorderColor="Gray">
+                                <StackLayout>
 
-                            <Label x:Name="PerentTeg" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
-                            <Label x:Name="PerentButtonTeg" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                                    <Label x:Name="PerentTeg" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                                    <Label x:Name="PerentButtonTeg" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
                         
 
-                        <StackLayout HorizontalOptions="Center">
-                                <Label x:Name="PerentObgect" Text="" VerticalTextAlignment="Center" />
-                            </StackLayout>
+                                <StackLayout HorizontalOptions="Center">
+                                        <Label x:Name="PerentObgect" Text="" VerticalTextAlignment="Center" />
+                                    </StackLayout>
                             
-                            <Label/>
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                                <Button Text="Изменить данную запись" Clicked="EditItem"/>
-                            </StackLayout>
+                                    <Label/>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                                        <Button Text="Изменить данную запись" Clicked="EditItem"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
                         </StackLayout>
-                    </Frame>
-                </StackLayout>
-                    <ListView  x:Name="listViweData"
-                          Margin="10"
-                          >
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell >
-                                <StackLayout Orientation="Vertical">
-                                    <Frame  BorderColor="Gray" >
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                            <Button Text="Добавить Кнопку" Clicked="AddButton" />
+                            <Button x:Name="BackButton" Text="ᐸ--" Clicked="ReteternPerentPage" IsVisible="false"/>
+                        </StackLayout>
+                        <ListView  x:Name="listViweData"
+                                    Margin="10"
+                                    >
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell >
+                                        <StackLayout Orientation="Vertical">
+                                            <Frame  BorderColor="Gray" >
                                         
-                                            <StackLayout Margin="1,1,1,1"
-                                                 Orientation="Vertical"
-                                                 HorizontalOptions="FillAndExpand"
-                                                     >
-                                            <StackLayout 
+                                                    <StackLayout Margin="1,1,1,1"
+                                                            Orientation="Vertical"
+                                                            HorizontalOptions="FillAndExpand"
+                                                                >
+                                                    <StackLayout 
                                                          
-                                                         Padding="10,5,10,5"
+                                                                    Padding="10,5,10,5"
                                                          
-                                                         HorizontalOptions="CenterAndExpand">
+                                                                    HorizontalOptions="CenterAndExpand">
 
-                                                <Label Text="{Binding Title}"
-                                                               VerticalTextAlignment="Center"
-                                                               HorizontalOptions="Center" 
+                                                        <Label Text="{Binding Title}"
+                                                                        VerticalTextAlignment="Center"
+                                                                        HorizontalOptions="Center" 
                                                                
                                                                
-                                                               />
-                                            </StackLayout>
-                                            <StackLayout Orientation ="Horizontal"
-                                                             HorizontalOptions="Center"
-                                                             >
-                                                <Button Text="Изменить данную запись" Clicked="EditItem"/>
-                                                <Button Text="Показать подменю" Clicked="ShowTGСhildMenu" IsVisible="{Binding HasUrl, Converter={StaticResource InvertedBoolConverter}}"/>
-                                                <Button Text="Удалить" Clicked="DeleteItemButton" />
+                                                                        />
+                                                    </StackLayout>
+                                                    <StackLayout Orientation ="Horizontal"
+                                                                        HorizontalOptions="Center"
+                                                                        >
+                                                        <Button Text="Изменить данную запись" Clicked="EditItem"/>
+                                                        <Button Text="Показать подменю" Clicked="ShowTGСhildMenu" IsVisible="{Binding HasUrl, Converter={StaticResource InvertedBoolConverter}}"/>
+                                                        <Button Text="Удалить" Clicked="DeleteItemButton" />
                                                 
                                             
-                                                </StackLayout>
-                                            </StackLayout>
-                                        </Frame>
-                                    <Label/>
-                                </StackLayout>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </StackLayout>
-                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Orientation="Horizontal">
-                    <Button Text="Добавить Кнопку" Clicked="AddButton" />
-                    <Button x:Name="BackButton" Text="ᐸ--" Clicked="ReteternPerentPage" IsVisible="false"/>
-                        
-                </StackLayout>
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                </Frame>
+                                            <Label/>
+                                        </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    
+                    </StackLayout>
+            </ScrollView>
             <Label/>
 
 

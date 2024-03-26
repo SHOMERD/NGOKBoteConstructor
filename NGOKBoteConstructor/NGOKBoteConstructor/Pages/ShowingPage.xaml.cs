@@ -127,5 +127,12 @@ namespace NGOKBoteConstructor.Pages
         {
             Navigation.PopModalAsync();
         }
+
+        private async void TrySetStats(object sender, EventArgs e)
+        {
+            RecuestDeconsrtuktor recuestDeconsrtuktor = new RecuestDeconsrtuktor();
+            await recuestDeconsrtuktor.TriReadFile(itemsOperator);
+            OnAppearing();
+        }
     }
 }

@@ -50,7 +50,8 @@ namespace NGOKBoteConstructor.logics
         public TGButton GetStartMenu()
         {
             TGButton tGButton = new TGButton() {
-                Teg = "StartMenu",
+                Teg = "aaa",
+                IntTeg = 0,
                 Title = "StartMenu",
                 HasUrl = false,
                 TextOfMenu = "Приветствую Вас! Я бот Новосибирского городского открытого колледжа, подскажите, а кем являетесь Вы?\r\n" };

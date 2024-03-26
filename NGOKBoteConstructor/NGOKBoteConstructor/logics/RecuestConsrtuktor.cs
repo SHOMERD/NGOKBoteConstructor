@@ -31,7 +31,7 @@ namespace NGOKBoteConstructor.logics
             string FileNameString = $"NGOKBoteStructure.json";
    
             string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-
+            
             File.WriteAllText(Path.Combine(folderPath, FileNameString), JsonString);
             return folderPath;
     
