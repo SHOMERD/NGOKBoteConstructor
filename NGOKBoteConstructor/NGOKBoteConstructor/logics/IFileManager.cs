@@ -9,7 +9,7 @@ namespace NGOKBoteConstructor.logics
     public interface IFileManager
     {
         Task<StreamReader> GetJsonFile();
-        void SaveJsonFile(string Jsonstring);
-
+        Task<string> SaveJsonFile(string Jsonstring);
+        void OpenExplorer(string path);
     }
 }

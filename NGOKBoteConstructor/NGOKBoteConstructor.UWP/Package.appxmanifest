@@ -4,9 +4,10 @@
   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
   xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
-  IgnorableNamespaces="uap mp">
+  
+	IgnorableNamespaces="uap mp">
 
-  <Identity
+	<Identity
     Name="052D4BC6-A790-4BBE-8D8A-5D8B21249D3A"
     Publisher="CN=SHOMERD"
     Version="1.0.0.0" />
@@ -48,4 +49,8 @@
       </uap:VisualElements>
     </Application>
   </Applications>
+
+	<Capabilities>
+		
+	</Capabilities>
 </Package>

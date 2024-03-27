@@ -145,12 +145,12 @@ namespace NGOKBoteConstructor.logics
             return ints;
         }
 
-        public int GetEmptyTeg()
+        public int GetEmptyTeg(TGButton tGButton = null)
         {
-            List<int> ints = GetEmptyTegs();
+            List<int> ints = GetEmptyTegs(tGButton);
             if (ints.Count == 0)
             {
-                return GetMaxTeg()+1;
+                return GetMaxTeg(tGButton) +1;
             }
             else
             {
@@ -159,6 +159,29 @@ namespace NGOKBoteConstructor.logics
             
         }
 
+        public string SetTeg(int t)
+        {
+            string letters = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ";
+            long del = t;
+            List<long> list = new List<long>();
+            while (del > 51)
+            {
+                list.Add(del % 51);
+                del = del / 51;
+            }
+            list.Add(del);
+            long[] ints = new long[3] { 0, 0, 0 };
+            for (int i = 0; i < ints.Length; i++)
+            {
+                try
+                {
+                    ints[i] = list[i];
+                }
+                catch (Exception e) { }
+            }
+            string a = "" + letters[(int)ints[2]] + letters[(int)ints[1]] + letters[(int)ints[0]];
+            return a;
+        }
 
 
 

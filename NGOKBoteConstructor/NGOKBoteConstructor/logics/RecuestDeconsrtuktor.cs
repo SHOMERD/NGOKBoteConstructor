@@ -45,25 +45,23 @@ namespace NGOKBoteConstructor.logics
         public TGButton DeconsrtuktJsongString(string JsonString) 
         {
 
-            JToken d = JsonConvert.DeserializeObject<JToken>(JsonString);
-            var s = d.Children();
+            JToken ButtonsAsJToken = JsonConvert.DeserializeObject<JToken>(JsonString);
+            var ButtonsAsJTokenList = ButtonsAsJToken.Children();
 
             List<TGButton> buttons = new List<TGButton>();
-            List<TGButtonsJS> assdqffq = new List<TGButtonsJS>();
+            List<TGButtonsJS> buttonsJS = new List<TGButtonsJS>();
 
-            foreach (var item in s)
+            foreach (var item in ButtonsAsJTokenList)
             {
                 string tag = item.Path;
 
+                string itemString = item.ToString();
+                int TrimIndex = itemString.IndexOf(": {");
+                itemString = itemString.Substring(TrimIndex + 2);
 
-                string a = item.ToString();
-                int w = a.IndexOf(": {");
-                a = a.Substring(w + 2);
-                Console.WriteLine(a);
-
-                assdqffq.Add(JsonConvert.DeserializeObject<TGButtonsJS>(a));
-                assdqffq.Last().Teg = tag;
-                buttons.Add(SetTegs(assdqffq.Last(), tag));
+                buttonsJS.Add(JsonConvert.DeserializeObject<TGButtonsJS>(itemString));
+                buttonsJS.Last().Teg = tag;
+                buttons.Add(SetButtonTags(buttonsJS.Last(), tag));
             }
 
             TGButton tGButton = new TGButton();
@@ -79,51 +77,51 @@ namespace NGOKBoteConstructor.logics
 
             while (buttons.Count != 0)
             {
-                int e = 0;
-                while (e < buttons.Count)
+                int i = 0;
+                while (i < buttons.Count)
                 {
-                    TGButton tGBuferButton = itemsOperator.GetTGbuttonByTeg(buttons[e].ParentTeg, tGButton);
+                    TGButton tGBuferButton = itemsOperator.GetTGbuttonByTeg(buttons[i].ParentTeg, tGButton);
                     if (tGBuferButton != null)
                     {
-                        tGBuferButton.TGСhildMenu.Add(buttons[e]);
-                        buttons.Remove(buttons[e]);
+                        tGBuferButton.TGСhildMenu.Add(buttons[i]);
+                        buttons.Remove(buttons[i]);
                     }
-                    e++;
+                    i++;
                 }
             }
 
-            foreach (TGButtonsJS button in assdqffq)
+
+            foreach (TGButtonsJS button in buttonsJS)
             {
                 if (button.Buttons != null)
                 {
-                    string bu = button.Buttons.ToString();
-                    List<string> g = bu.Substring(1, bu.Length - 3).Trim().Split('"').ToList();
-                    g.RemoveAll(gg => gg == "" || gg == ": " || gg == ",\r\n  ");
+                    string buttonStriong = button.Buttons.ToString();
+                    List<string> ChildButons = buttonStriong.Substring(1, buttonStriong.Length - 3).Trim().Split('"').ToList();
+                    ChildButons.RemoveAll(gg => gg == "" || gg == ": " || gg == ",\r\n  ");
 
-                    for (int i = 0; i < g.Count; i += 2)
+                    for (int i = 0; i < ChildButons.Count; i += 2)
                     {
-                        itemsOperator.GetTGbuttonByTeg(g[i], tGButton).Title = g[i + 1];
+                        itemsOperator.GetTGbuttonByTeg(ChildButons[i], tGButton).Title = ChildButons[i + 1];
                     }
                 }
                 if (button.urlButtons != null)
                 {
-                    string bu = button.urlButtons.ToString();
-                    List<string> g = bu.Substring(1, bu.Length - 3).Trim().Split('"').ToList();
-                    g.RemoveAll(gg => gg == "" || gg == ": " || gg == ",\r\n  ");
-                    for (int i = 0; i < g.Count; i += 2)
+                    string buttonStriong = button.urlButtons.ToString();
+                    List<string> ChildUrlButons = buttonStriong.Substring(1, buttonStriong.Length - 3).Trim().Split('"').ToList();
+                    ChildUrlButons.RemoveAll(gg => gg == "" || gg == ": " || gg == ",\r\n  ");
+                    for (int i = 0; i < ChildUrlButons.Count; i += 2)
                     {
+                        int intTeg = itemsOperator.GetEmptyTeg(tGButton);
                         itemsOperator.GetTGbuttonByTeg(button.Teg, tGButton).TGСhildMenu.Add(new TGButton()
                         {
-                            Teg = "УБРАТЬ!!!!!!!",
-                            Title = g[i + 1],
+                            Teg = itemsOperator.SetTeg(intTeg),
+                            IntTeg = intTeg,
+                            Title = ChildUrlButons[i + 1],
                             HasUrl = true,
-                            Url = new Uri(g[i])
+                            Url = new Uri(ChildUrlButons[i])
                         });
 
                     }
-
-
-                    Console.WriteLine(g);
 
                 }
             }
@@ -132,7 +130,8 @@ namespace NGOKBoteConstructor.logics
 
         }
 
-        static TGButton SetTegs(TGButtonsJS tGButtonsJS, string Teg)
+
+        static TGButton SetButtonTags(TGButtonsJS tGButtonsJS, string Teg)
         {
             string letters = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ";
             TGButton button = new TGButton();
@@ -148,11 +147,6 @@ namespace NGOKBoteConstructor.logics
 
             return button;
         }
-
-
-
-
-
 
 
 

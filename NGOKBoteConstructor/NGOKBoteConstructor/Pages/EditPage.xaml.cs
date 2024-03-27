@@ -124,7 +124,7 @@ namespace NGOKBoteConstructor.Pages
                 {
                     int t =  itemsOperator.GetEmptyTeg();
                     TgButton.IntTeg = t;
-                    TgButton.Teg = SetTeg(t);
+                    TgButton.Teg = itemsOperator.SetTeg(t);
                     itemsOperator.GetTGbuttonByTeg(PerentTeg).TGСhildMenu.Add(TgButton);
                 }
 
@@ -169,28 +169,6 @@ namespace NGOKBoteConstructor.Pages
             Navigation.PopModalAsync();
         }
 
-        public string SetTeg(int t)
-        {
-            string letters = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ";
-            long del = t;
-            List<long> list = new List<long>();
-            while (del > 51)
-            {
-                list.Add(del % 51);
-                del = del / 51;
-            }
-            list.Add(del);
-            long[] ints = new long[3] { 0, 0, 0 };
-            for (int i = 0; i < ints.Length; i++)
-            {
-                try
-                {
-                    ints[i] = list[i];
-                }
-                catch (Exception e) { }
-            }
-            string a = "" + letters[(int)ints[2]] + letters[(int)ints[1]] + letters[(int)ints[0]];
-            return a;
-        }
+       
     }
 }

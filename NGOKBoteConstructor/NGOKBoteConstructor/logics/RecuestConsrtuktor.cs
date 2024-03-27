@@ -2,11 +2,14 @@
 using NGOKBoteConstructor.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
+using Xamarin.Forms.Shapes;
 
 namespace NGOKBoteConstructor.logics
 {
@@ -15,24 +18,30 @@ namespace NGOKBoteConstructor.logics
 
         public static async void CreateJsonFile(TGButton tGButton)
         {
-            string jsonPosition = CreateFile(CreateJsonString(tGButton));
-            if (await Application.Current.MainPage.DisplayAlert("Файл сохранен", $"\tПуть к файлу:\n{jsonPosition}  \n\tФайл:\nNGOKBoteStructure.json", "Скопировать расположение файла", "ок"))
+
+            string jsonPosition = await CreateFile(CreateJsonString(tGButton));
+            if (jsonPosition != "fail")
             {
-                await Clipboard.SetTextAsync(jsonPosition);
+                if (await Application.Current.MainPage.DisplayAlert("Файл сохранен", $"\tПуть к файлу:\n{jsonPosition}  \n\tФайл:\nNGOKBoteStructure.json", "Скопировать расположение файла", "ок"))
+                {
+                    await Clipboard.SetTextAsync(jsonPosition);
+                }
             }
-            
+            else
+            {
+                Application.Current.MainPage.DisplayAlert("Файл не сохранен", $"Выбранная папка не подходит", "ок");
+            }
+
+
 
 
         }
 
 
-        static string CreateFile(string JsonString)
+        static async Task<string> CreateFile(string JsonString)
         {
-            string FileNameString = $"NGOKBoteStructure.json";
-   
-            string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            
-            File.WriteAllText(Path.Combine(folderPath, FileNameString), JsonString);
+            string folderPath = await DependencyService.Get<IFileManager>().SaveJsonFile(JsonString);
+
             return folderPath;
     
         }
