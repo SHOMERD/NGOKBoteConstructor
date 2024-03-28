@@ -113,7 +113,7 @@ namespace NGOKBoteConstructor.Pages
             }
             else
             {
-                Navigation.PushModalAsync(new NavigationPage(new EditPage(itemsOperator, itemsOperator.GetTGbuttonByTeg(ActiveButtonTeg), ActiveButtonTeg)));
+                Navigation.PushModalAsync(new NavigationPage(new EditPage(itemsOperator, itemsOperator.GetTGbuttonByTeg(ActiveButtonTeg), itemsOperator.GetTGbuttonByTeg(ActiveButtonTeg).ParentTeg)));
             }
         }
 

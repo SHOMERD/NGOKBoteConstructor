@@ -15,6 +15,7 @@ namespace NGOKBoteConstructor.Models
         public string Title { get; set; }
         public String TextOfMenu { get; set; }
 
+        public bool СhildCanBeOnliUrl { get; set; }
         public bool HasUrl { get; set; }
         public Uri Url { get; set; }
 

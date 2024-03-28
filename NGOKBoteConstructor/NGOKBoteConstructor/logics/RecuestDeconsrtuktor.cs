@@ -56,12 +56,17 @@ namespace NGOKBoteConstructor.logics
                 string tag = item.Path;
 
                 string itemString = item.ToString();
-                int TrimIndex = itemString.IndexOf(": {");
-                itemString = itemString.Substring(TrimIndex + 2);
+                itemString = itemString.Substring(itemString.IndexOf(": {") + 2);
 
                 buttonsJS.Add(JsonConvert.DeserializeObject<TGButtonsJS>(itemString));
                 buttonsJS.Last().Teg = tag;
                 buttons.Add(SetButtonTags(buttonsJS.Last(), tag));
+                buttons.Last().СhildCanBeOnliUrl = false;
+                if (buttonsJS.Last().urlButtons != null)
+                {
+                    buttons.Last().СhildCanBeOnliUrl = true;
+                }
+
             }
 
             TGButton tGButton = new TGButton();
@@ -93,6 +98,7 @@ namespace NGOKBoteConstructor.logics
 
             foreach (TGButtonsJS button in buttonsJS)
             {
+
                 if (button.Buttons != null)
                 {
                     string buttonStriong = button.Buttons.ToString();
@@ -106,6 +112,7 @@ namespace NGOKBoteConstructor.logics
                 }
                 if (button.urlButtons != null)
                 {
+
                     string buttonStriong = button.urlButtons.ToString();
                     List<string> ChildUrlButons = buttonStriong.Substring(1, buttonStriong.Length - 3).Trim().Split('"').ToList();
                     ChildUrlButons.RemoveAll(gg => gg == "" || gg == ": " || gg == ",\r\n  ");

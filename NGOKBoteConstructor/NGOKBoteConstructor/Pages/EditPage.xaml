@@ -22,21 +22,21 @@
             <Entry x:Name="TitleEntery" MaxLength="30"/>
             <Label/>
 
-            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                <Label Text="Кнопка с переходом по ссылке" VerticalOptions="CenterAndExpand"/>
+            <StackLayout x:Name="NotUrlUi" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Label Text="Подменю состоить только из кнопок - ссылок" VerticalOptions="CenterAndExpand"/>
                 <Switch  x:Name="WithUrl"/>
             </StackLayout>
 
             <Label/>
 
-            <StackLayout IsVisible="{Binding Source={x:Reference WithUrl}, Path=IsToggled, Converter={StaticResource InvertedBoolConverter}}"> 
+                <StackLayout x:Name="NotUrlUi1"> 
                 <Label Text="Текст подменю:"/>
                 <Editor AutoSize="TextChanges" x:Name="TextOfMenuEntery" MaxLength="3500"/>
             </StackLayout>
-            
-            
-            
-            <StackLayout IsVisible="{Binding Source={x:Reference WithUrl}, Path=IsToggled}">
+
+
+
+                <StackLayout  x:Name="UrlUi">
                 <Label Text="Ссылка  кнопки"/>
                 <Entry x:Name="UriEntry"/>  
             </StackLayout>

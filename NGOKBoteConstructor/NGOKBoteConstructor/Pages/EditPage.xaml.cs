@@ -19,16 +19,24 @@ namespace NGOKBoteConstructor.Pages
         public TGButton TgButton {  get; set; }
         ItemsOperator itemsOperator;
         string PerentTeg { get; set; }
-        bool isRecursive {  get; set; }
+        bool CanHaveСhildMenu {  get; set; }
         bool isNew { get; set; }
 
-        public EditPage(ItemsOperator itemsOperator, TGButton TgButton, string PerentTeg = null, bool isRecursive = false)
+        public EditPage(ItemsOperator itemsOperator, TGButton TgButton, string PerentTeg)
         {
             InitializeComponent();
 
             this.itemsOperator = itemsOperator;
             this.PerentTeg = PerentTeg;
-            this.isRecursive = isRecursive;
+            if (PerentTeg == null)
+            {
+                this.CanHaveСhildMenu = true;
+            }
+            else
+            {
+                this.CanHaveСhildMenu = !itemsOperator.GetTGbuttonByTeg(PerentTeg).СhildCanBeOnliUrl;
+            }
+            
             if (TgButton == null) 
             {
                 isNew = true;
@@ -45,30 +53,38 @@ namespace NGOKBoteConstructor.Pages
 
         public void SetContext() 
         {
-            if (TgButton.Teg == "StartMenu")
+            if (TgButton.Teg == "aaa")
             {
                 WithUrl.IsVisible = false;
                 TitleEntery.IsReadOnly = true;
                 UriEntry.IsVisible = false;
                 PlacePicker.IsVisible = false;
             }
+            else
+            {
+                TGButton tGButton = itemsOperator.GetTGbuttonByTeg(PerentTeg);
+                List<int> ints = new List<int>();
 
-            WithUrl.IsToggled = TgButton.HasUrl;
+                for (int i = 0; i < tGButton.TGСhildMenu.Count; i++)
+                {
+                    
+                    ints.Add(i + 1);
+                }
+                PlacePicker.ItemsSource = ints;
+            }
+
+            WithUrl.IsToggled = TgButton.СhildCanBeOnliUrl;
             TextOfMenuEntery.Text = TgButton.TextOfMenu;
             TitleEntery.Text = TgButton.Title;
             ItemTegEntry.Text = TgButton.Teg;
             try {  UriEntry.Text = TgButton.Url.ToString(); } catch (Exception) { }
 
+            UrlUi.IsVisible = !CanHaveСhildMenu;
+            NotUrlUi.IsVisible = CanHaveСhildMenu;
+            NotUrlUi1.IsVisible = CanHaveСhildMenu;
 
-            List<int> ints = new List<int>();
-            TGButton tGButton = itemsOperator.GetTGbuttonByTeg(PerentTeg);
 
-            for (int i = 0; i < tGButton.TGСhildMenu.Count; i++)
-            {
-                ints.Add(i + 1);
-            }
-
-            PlacePicker.ItemsSource = ints;
+            
             TegIsSeteblede.IsEnabled = string.IsNullOrEmpty(TgButton.Teg);
 
         }
@@ -83,7 +99,7 @@ namespace NGOKBoteConstructor.Pages
             }
 
 
-            if (WithUrl.IsToggled)
+            if (!CanHaveСhildMenu)
             {
                 if(ChekUrl(UriEntry.Text) == null)
                 {
@@ -114,7 +130,17 @@ namespace NGOKBoteConstructor.Pages
                 TgButton.TextOfMenu = TextOfMenuEntery.Text;
                  
                 TgButton.ParentTeg = PerentTeg;
-                TgButton.HasUrl = WithUrl.IsToggled;
+                TgButton.HasUrl = !CanHaveСhildMenu;
+
+                if (CanHaveСhildMenu)
+                {
+                    TgButton.СhildCanBeOnliUrl = true;
+                }
+                else
+                {
+                    TgButton.СhildCanBeOnliUrl = WithUrl.IsVisible;
+                }
+
 
                 TgButton.Title = TitleEntery.Text;
 
