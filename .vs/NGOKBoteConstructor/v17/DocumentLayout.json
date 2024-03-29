@@ -1,0 +1,212 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "F:\\C#Progects\\NGOKBoteConstructor\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8207858A-5A38-4D90-8148-A7953B27E85D}|NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor.csproj|f:\\c#progects\\ngokboteconstructor\\ngokboteconstructor\\ngokboteconstructor\\logics\\recuestdeconsrtuktor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8207858A-5A38-4D90-8148-A7953B27E85D}|NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor.csproj|solutionrelative:ngokboteconstructor\\ngokboteconstructor\\logics\\recuestdeconsrtuktor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E2F5983-021B-4CAA-957B-C63B6501EFE4}|NGOKBoteConstructor\\NGOKBoteConstructor.UWP\\NGOKBoteConstructor.UWP.csproj|F:\\C#Progects\\NGOKBoteConstructor\\ngokboteconstructor\\ngokboteconstructor.uwp\\filemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E2F5983-021B-4CAA-957B-C63B6501EFE4}|NGOKBoteConstructor\\NGOKBoteConstructor.UWP\\NGOKBoteConstructor.UWP.csproj|solutionrelative:ngokboteconstructor\\ngokboteconstructor.uwp\\filemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8207858A-5A38-4D90-8148-A7953B27E85D}|NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor.csproj|f:\\c#progects\\ngokboteconstructor\\ngokboteconstructor\\ngokboteconstructor\\logics\\recuestconsrtuktor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8207858A-5A38-4D90-8148-A7953B27E85D}|NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor.csproj|solutionrelative:ngokboteconstructor\\ngokboteconstructor\\logics\\recuestconsrtuktor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8207858A-5A38-4D90-8148-A7953B27E85D}|NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor.csproj|f:\\c#progects\\ngokboteconstructor\\ngokboteconstructor\\ngokboteconstructor\\pages\\editpage.xaml||{2974C621-7033-421A-B08A-11D27B021D1B}",
+      "RelativeMoniker": "D:0:0:{8207858A-5A38-4D90-8148-A7953B27E85D}|NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor.csproj|solutionrelative:ngokboteconstructor\\ngokboteconstructor\\pages\\editpage.xaml||{2974C621-7033-421A-B08A-11D27B021D1B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8207858A-5A38-4D90-8148-A7953B27E85D}|NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor.csproj|f:\\c#progects\\ngokboteconstructor\\ngokboteconstructor\\ngokboteconstructor\\pages\\editpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8207858A-5A38-4D90-8148-A7953B27E85D}|NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor.csproj|solutionrelative:ngokboteconstructor\\ngokboteconstructor\\pages\\editpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8207858A-5A38-4D90-8148-A7953B27E85D}|NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor.csproj|f:\\c#progects\\ngokboteconstructor\\ngokboteconstructor\\ngokboteconstructor\\pages\\showingpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8207858A-5A38-4D90-8148-A7953B27E85D}|NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor.csproj|solutionrelative:ngokboteconstructor\\ngokboteconstructor\\pages\\showingpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8207858A-5A38-4D90-8148-A7953B27E85D}|NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor.csproj|f:\\c#progects\\ngokboteconstructor\\ngokboteconstructor\\ngokboteconstructor\\models\\tgbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8207858A-5A38-4D90-8148-A7953B27E85D}|NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor.csproj|solutionrelative:ngokboteconstructor\\ngokboteconstructor\\models\\tgbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8207858A-5A38-4D90-8148-A7953B27E85D}|NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor.csproj|f:\\c#progects\\ngokboteconstructor\\ngokboteconstructor\\ngokboteconstructor\\logics\\itemsoperator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8207858A-5A38-4D90-8148-A7953B27E85D}|NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor.csproj|solutionrelative:ngokboteconstructor\\ngokboteconstructor\\logics\\itemsoperator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8207858A-5A38-4D90-8148-A7953B27E85D}|NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor.csproj|f:\\c#progects\\ngokboteconstructor\\ngokboteconstructor\\ngokboteconstructor\\pages\\showingpage.xaml||{2974C621-7033-421A-B08A-11D27B021D1B}",
+      "RelativeMoniker": "D:0:0:{8207858A-5A38-4D90-8148-A7953B27E85D}|NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor.csproj|solutionrelative:ngokboteconstructor\\ngokboteconstructor\\pages\\showingpage.xaml||{2974C621-7033-421A-B08A-11D27B021D1B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E2F5983-021B-4CAA-957B-C63B6501EFE4}|NGOKBoteConstructor\\NGOKBoteConstructor.UWP\\NGOKBoteConstructor.UWP.csproj|F:\\C#Progects\\NGOKBoteConstructor\\ngokboteconstructor\\ngokboteconstructor.uwp\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4E2F5983-021B-4CAA-957B-C63B6501EFE4}|NGOKBoteConstructor\\NGOKBoteConstructor.UWP\\NGOKBoteConstructor.UWP.csproj|solutionrelative:ngokboteconstructor\\ngokboteconstructor.uwp\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:2:0:{57d563b6-44a5-47df-85be-f4199ad6b651}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:3:0:{57d563b6-44a5-47df-85be-f4199ad6b651}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:4:0:{57d563b6-44a5-47df-85be-f4199ad6b651}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:7:0:{57d563b6-44a5-47df-85be-f4199ad6b651}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:5:0:{57d563b6-44a5-47df-85be-f4199ad6b651}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{57d563b6-44a5-47df-85be-f4199ad6b651}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FileManager.cs",
+              "DocumentMoniker": "F:\\C#Progects\\NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor.UWP\\FileManager.cs",
+              "RelativeDocumentMoniker": "NGOKBoteConstructor\\NGOKBoteConstructor.UWP\\FileManager.cs",
+              "ToolTip": "F:\\C#Progects\\NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor.UWP\\FileManager.cs",
+              "RelativeToolTip": "NGOKBoteConstructor\\NGOKBoteConstructor.UWP\\FileManager.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAAB0AAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-25T15:16:23.809Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RecuestDeconsrtuktor.cs",
+              "DocumentMoniker": "F:\\C#Progects\\NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor\\logics\\RecuestDeconsrtuktor.cs",
+              "RelativeDocumentMoniker": "NGOKBoteConstructor\\NGOKBoteConstructor\\logics\\RecuestDeconsrtuktor.cs",
+              "ToolTip": "F:\\C#Progects\\NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor\\logics\\RecuestDeconsrtuktor.cs",
+              "RelativeToolTip": "NGOKBoteConstructor\\NGOKBoteConstructor\\logics\\RecuestDeconsrtuktor.cs",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAowEIAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-28T15:53:07.802Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RecuestConsrtuktor.cs",
+              "DocumentMoniker": "F:\\C#Progects\\NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor\\logics\\RecuestConsrtuktor.cs",
+              "RelativeDocumentMoniker": "NGOKBoteConstructor\\NGOKBoteConstructor\\logics\\RecuestConsrtuktor.cs",
+              "ToolTip": "F:\\C#Progects\\NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor\\logics\\RecuestConsrtuktor.cs",
+              "RelativeToolTip": "NGOKBoteConstructor\\NGOKBoteConstructor\\logics\\RecuestConsrtuktor.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-28T15:48:50.458Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TGButton.cs",
+              "DocumentMoniker": "F:\\C#Progects\\NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor\\Models\\TGButton.cs",
+              "RelativeDocumentMoniker": "NGOKBoteConstructor\\NGOKBoteConstructor\\Models\\TGButton.cs",
+              "ToolTip": "F:\\C#Progects\\NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor\\Models\\TGButton.cs",
+              "RelativeToolTip": "NGOKBoteConstructor\\NGOKBoteConstructor\\Models\\TGButton.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-28T15:48:12.445Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ItemsOperator.cs",
+              "DocumentMoniker": "F:\\C#Progects\\NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor\\logics\\ItemsOperator.cs",
+              "RelativeDocumentMoniker": "NGOKBoteConstructor\\NGOKBoteConstructor\\logics\\ItemsOperator.cs",
+              "ToolTip": "F:\\C#Progects\\NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor\\logics\\ItemsOperator.cs",
+              "RelativeToolTip": "NGOKBoteConstructor\\NGOKBoteConstructor\\logics\\ItemsOperator.cs",
+              "ViewState": "AQIAAHgAAAAAAAAAAAAUwIIAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-28T15:47:55.705Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EditPage.xaml",
+              "DocumentMoniker": "F:\\C#Progects\\NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor\\Pages\\EditPage.xaml",
+              "RelativeDocumentMoniker": "NGOKBoteConstructor\\NGOKBoteConstructor\\Pages\\EditPage.xaml",
+              "ToolTip": "F:\\C#Progects\\NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor\\Pages\\EditPage.xaml",
+              "RelativeToolTip": "NGOKBoteConstructor\\NGOKBoteConstructor\\Pages\\EditPage.xaml",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAB8AAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-03-21T15:02:32.767Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EditPage.xaml.cs",
+              "DocumentMoniker": "F:\\C#Progects\\NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor\\Pages\\EditPage.xaml.cs",
+              "RelativeDocumentMoniker": "NGOKBoteConstructor\\NGOKBoteConstructor\\Pages\\EditPage.xaml.cs",
+              "ToolTip": "F:\\C#Progects\\NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor\\Pages\\EditPage.xaml.cs",
+              "RelativeToolTip": "NGOKBoteConstructor\\NGOKBoteConstructor\\Pages\\EditPage.xaml.cs",
+              "ViewState": "AQIAADoAAAAAAAAAAAAiwE8AAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-21T15:02:33.523Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ShowingPage.xaml.cs",
+              "DocumentMoniker": "F:\\C#Progects\\NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor\\Pages\\ShowingPage.xaml.cs",
+              "RelativeDocumentMoniker": "NGOKBoteConstructor\\NGOKBoteConstructor\\Pages\\ShowingPage.xaml.cs",
+              "ToolTip": "F:\\C#Progects\\NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor\\Pages\\ShowingPage.xaml.cs",
+              "RelativeToolTip": "NGOKBoteConstructor\\NGOKBoteConstructor\\Pages\\ShowingPage.xaml.cs",
+              "ViewState": "AQIAAFkAAAAAAAAAAIAwwHMAAADDAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-21T15:02:35.34Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ShowingPage.xaml",
+              "DocumentMoniker": "F:\\C#Progects\\NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor\\Pages\\ShowingPage.xaml",
+              "RelativeDocumentMoniker": "NGOKBoteConstructor\\NGOKBoteConstructor\\Pages\\ShowingPage.xaml",
+              "ToolTip": "F:\\C#Progects\\NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor\\Pages\\ShowingPage.xaml",
+              "RelativeToolTip": "NGOKBoteConstructor\\NGOKBoteConstructor\\Pages\\ShowingPage.xaml",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAAADYAAABhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-03-21T15:02:34.643Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MainPage.xaml",
+              "DocumentMoniker": "F:\\C#Progects\\NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor.UWP\\MainPage.xaml",
+              "RelativeDocumentMoniker": "NGOKBoteConstructor\\NGOKBoteConstructor.UWP\\MainPage.xaml",
+              "ToolTip": "F:\\C#Progects\\NGOKBoteConstructor\\NGOKBoteConstructor\\NGOKBoteConstructor.UWP\\MainPage.xaml",
+              "RelativeToolTip": "NGOKBoteConstructor\\NGOKBoteConstructor.UWP\\MainPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-03-26T05:13:26.194Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
