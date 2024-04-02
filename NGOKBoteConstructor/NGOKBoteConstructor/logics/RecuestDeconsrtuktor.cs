@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
+using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 
 namespace NGOKBoteConstructor.logics
 {
@@ -28,7 +29,7 @@ namespace NGOKBoteConstructor.logics
             }
             catch (Exception)
             {
-                Application.Current.MainPage.DisplayAlert("Файл не распознан", $"Файл не подходит для распознания", "ок");
+                Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Файл не распознан", $"Файл не подходит для распознания", "ок");
                 return false;
             }
             
@@ -81,20 +82,30 @@ namespace NGOKBoteConstructor.logics
             }
 
 
-            while (buttons.Count != 0)
+            for (int i = 0; i < buttonsJS.Count; i++)
             {
-                int i = 0;
-                while (i < buttons.Count)
+                if (buttonsJS[i].Buttons != null)
                 {
-                    TGButton tGBuferButton = itemsOperator.GetTGbuttonByTeg(buttons[i].ParentTeg, tGButton);
-                    if (tGBuferButton != null)
+                    List<string> ChildButons = WashString(buttonsJS[i].Buttons.ToString());
+
+                    for (int l  = 0; l < ChildButons.Count; l += 2)
                     {
-                        tGBuferButton.TGСhildMenu.Add(buttons[i]);
-                        buttons.Remove(buttons[i]);
+                        for (int o = 0; o < buttons.Count; o++)
+                        {
+                            if (buttons[o].Teg == ChildButons[l])
+                            {
+                                itemsOperator.GetTGbuttonByTeg(buttons[o].ParentTeg, tGButton).TGСhildMenu.Add(buttons[o]);
+                                buttons.Remove(buttons[o]);
+                                break;
+                            }
+                        }
                     }
-                    i++;
+
                 }
             }
+
+
+            
 
 
             foreach (TGButtonsJS button in buttonsJS)
@@ -102,9 +113,7 @@ namespace NGOKBoteConstructor.logics
 
                 if (button.Buttons != null)
                 {
-                    string buttonStriong = button.Buttons.ToString();
-                    List<string> ChildButons = buttonStriong.Substring(1, buttonStriong.Length - 3).Trim().Split('"').ToList();
-                    ChildButons.RemoveAll(gg => gg == "" || gg == ": " || gg == ",\r\n  ");
+                    List<string> ChildButons = WashString(button.Buttons.ToString());
 
                     for (int i = 0; i < ChildButons.Count; i += 2)
                     {
@@ -113,10 +122,8 @@ namespace NGOKBoteConstructor.logics
                 }
                 if (button.urlButtons != null)
                 {
+                    List<string> ChildUrlButons = WashString(button.urlButtons.ToString());
 
-                    string buttonStriong = button.urlButtons.ToString();
-                    List<string> ChildUrlButons = buttonStriong.Substring(1, buttonStriong.Length - 3).Trim().Split('"').ToList();
-                    ChildUrlButons.RemoveAll(gg => gg == "" || gg == ": " || gg == ",\r\n  ");
                     for (int i = 0; i < ChildUrlButons.Count; i += 2)
                     {
                         int intTeg = itemsOperator.GetEmptyTeg(tGButton);
@@ -133,11 +140,18 @@ namespace NGOKBoteConstructor.logics
 
                 }
             }
-            sortRerck(tGButton);
 
             return tGButton;
 
         }
+
+        public List<string> WashString(string buttonStriong)
+        {
+            List<string> ChildUrlButons = buttonStriong.Substring(1, buttonStriong.Length - 3).Trim().Split('"').ToList();
+            ChildUrlButons.RemoveAll(gg => gg == "" || gg == ": " || gg == ",\r\n  ");
+            return ChildUrlButons;
+        }
+
 
         static void sortRerck(TGButton tGButton)
         {
