@@ -23,6 +23,7 @@ namespace NGOKBoteConstructor.logics
             try
             {
                 itemsOperator.TGMenu= DeconsrtuktJsongString(await ReadJsonFile());
+                itemsOperator.SeveStats();
                 return true;
             }
             catch (Exception)
@@ -132,8 +133,19 @@ namespace NGOKBoteConstructor.logics
 
                 }
             }
+            sortRerck(tGButton);
 
             return tGButton;
+
+        }
+
+        static void sortRerck(TGButton tGButton)
+        {
+            tGButton.TGСhildMenu.Sort();
+            for (int i = 0; i < tGButton.TGСhildMenu.Count; i++)
+            {
+                sortRerck(tGButton.TGСhildMenu[i]);
+            }
 
         }
 

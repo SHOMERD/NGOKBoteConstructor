@@ -59,6 +59,7 @@ namespace NGOKBoteConstructor.Pages
         private void DeleteItemButton(object sender, EventArgs e)
         {
             itemsOperator.DeliteButton((TGButton)(sender as Xamarin.Forms.Button).BindingContext, ActiveButtonTeg);
+            itemsOperator.SeveStats();
             OnAppearing();
         }
 
@@ -69,19 +70,6 @@ namespace NGOKBoteConstructor.Pages
             RecuestConsrtuktor.CreateJsonFile(itemsOperator.TGMenu);
            
         }
-
-
-
-        private void Save(object sender, EventArgs e)
-        {
-            if (itemsOperator.SeveStats())
-            {
-                App.Current.MainPage.DisplayAlert("Сохранено", "", "OK");
-            }
-
-        }
-
-
 
 
         private void ShowTGСhildMenu(object sender, EventArgs e)
