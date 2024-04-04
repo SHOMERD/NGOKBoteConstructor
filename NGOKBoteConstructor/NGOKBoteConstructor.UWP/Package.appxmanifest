@@ -10,7 +10,7 @@
 	<Identity
     Name="052D4BC6-A790-4BBE-8D8A-5D8B21249D3A"
     Publisher="CN=SHOMERD"
-    Version="1.1.3.0" />
+    Version="1.1.1.0" />
 
   <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 

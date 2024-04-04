@@ -35,9 +35,16 @@ namespace NGOKBoteConstructor.Pages
             PerentButtonTeg.Text = "Надпись на нажатой кнопке: " + tGButton.Title;
             PerentObgect.Text = "Текст меню:\n" + tGButton.TextOfMenu;
             listViweData.ItemsSource = null;
-            
-            listViweData.ItemsSource = tGButton.TGСhildMenu;                                                                                
-            
+
+            List<TGButton> Bufer = new List<TGButton>();
+            for (int i = 0; i < tGButton.TGСhildMenu.Count; i++)
+            {
+                if (tGButton.СhildCanBeOnliUrl == tGButton.TGСhildMenu[i].HasUrl)
+                {
+                    Bufer.Add(tGButton.TGСhildMenu[i]);
+                }
+            }
+            listViweData.ItemsSource = Bufer;
 
             if (itemsOperator.TGMenu.Teg == ActiveButtonTeg) 
             {
@@ -59,6 +66,7 @@ namespace NGOKBoteConstructor.Pages
         private void DeleteItemButton(object sender, EventArgs e)
         {
             itemsOperator.DeliteButton((TGButton)(sender as Xamarin.Forms.Button).BindingContext, ActiveButtonTeg);
+            itemsOperator.SeveStats();
             OnAppearing();
         }
 
@@ -69,19 +77,6 @@ namespace NGOKBoteConstructor.Pages
             RecuestConsrtuktor.CreateJsonFile(itemsOperator.TGMenu);
            
         }
-
-
-
-        private void Save(object sender, EventArgs e)
-        {
-            if (itemsOperator.SeveStats())
-            {
-                App.Current.MainPage.DisplayAlert("Сохранено", "", "OK");
-            }
-
-        }
-
-
 
 
         private void ShowTGСhildMenu(object sender, EventArgs e)

@@ -23,14 +23,13 @@
                     <StackLayout>
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
                     <Button Text="Получить файл для отправления" Clicked="SaveJson"/>
-                    <Button Text="Сохранить" Clicked="Save" />
                     <Button Text="Загрузить структуру из файла" Clicked="TrySetStats"/>
                 
                 </StackLayout>
 
 </StackLayout>
 
-            <ScrollView>
+
                 <StackLayout>
                     <StackLayout>
                         <StackLayout  x:Name="TextOfMenu">
@@ -42,7 +41,7 @@
                         
 
                                 <StackLayout HorizontalOptions="Center">
-                                        <Label x:Name="PerentObgect" Text="" VerticalTextAlignment="Center" />
+                                        <Label x:Name="PerentObgect" Text="" VerticalTextAlignment="Center"  MaxLines="16"/>
                                     </StackLayout>
                             
                                     <Label/>
@@ -61,7 +60,7 @@
                                     >
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
-                                        <ViewCell >
+                                        <ViewCell>
                                         <StackLayout Orientation="Vertical">
                                             <Frame  BorderColor="Gray" >
                                         
@@ -102,7 +101,7 @@
                         </StackLayout>
                     
                     </StackLayout>
-            </ScrollView>
+
             <Label/>
 
 

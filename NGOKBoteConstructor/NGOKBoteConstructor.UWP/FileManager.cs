@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.Pickers;
+using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Xamarin.Forms;
@@ -59,18 +60,16 @@ namespace NGOKBoteConstructor.UWP
 
             }else
             {
-                return "fail";
+                return null;
             }
 
 
 
         }
 
-        public void OpenExplorer(string path)
+        public async void OpenExplorerAsync(string path)
         {
-            var proc = new System.Diagnostics.Process();
-            proc.StartInfo.FileName = "C:\\Windows\\explorer.exe";
-            proc.Start();
+            await Launcher.LaunchFolderPathAsync(path);
         }
 
     }

@@ -10,6 +10,6 @@ namespace NGOKBoteConstructor.logics
     {
         Task<StreamReader> GetJsonFile();
         Task<string> SaveJsonFile(string Jsonstring);
-        void OpenExplorer(string path);
+        void OpenExplorerAsync(string path);
     }
 }
