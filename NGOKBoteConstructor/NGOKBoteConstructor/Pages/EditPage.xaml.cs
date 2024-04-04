@@ -128,7 +128,7 @@ namespace NGOKBoteConstructor.Pages
             {
                 
 
-                TgButton.TextOfMenu = TextOfMenuEntery.Text;
+                TgButton.TextOfMenu = TextOfMenuEntery.Text.Replace('\r','\n');
                  
                 TgButton.ParentTeg = PerentTeg;
                 TgButton.HasUrl = !CanHaveСhildMenu;
