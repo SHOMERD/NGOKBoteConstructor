@@ -93,11 +93,15 @@ namespace NGOKBoteConstructor.Pages
 
         public bool ChekPossibilityToSave()
         {
-            if (string.IsNullOrEmpty(TitleEntery.Text))
+            if (TgButton.Teg != "aaa")
             {
-                App.Current.MainPage.DisplayAlert("Нельзя сохранить объект!", "Не задан текст на кнопке", "ок");
-                return false;
+                if (string.IsNullOrEmpty(TitleEntery.Text))
+                {
+                    App.Current.MainPage.DisplayAlert("Нельзя сохранить объект!", "Не задан текст на кнопке", "ок");
+                    return false;
+                }
             }
+            
 
 
             if (!CanHaveСhildMenu)
