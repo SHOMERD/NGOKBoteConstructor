@@ -80,6 +80,7 @@ namespace NGOKBoteConstructor.Pages
             try {  UriEntry.Text = TgButton.Url.ToString(); } catch (Exception) { }
 
             UrlUi.IsVisible = !CanHaveСhildMenu;
+
             NotUrlUi.IsVisible = CanHaveСhildMenu;
             NotUrlUi1.IsVisible = CanHaveСhildMenu;
 
@@ -134,11 +135,11 @@ namespace NGOKBoteConstructor.Pages
 
                 if (CanHaveСhildMenu)
                 {
-                    TgButton.СhildCanBeOnliUrl = true;
+                    TgButton.СhildCanBeOnliUrl = WithUrl.IsToggled;
                 }
                 else
                 {
-                    TgButton.СhildCanBeOnliUrl = WithUrl.IsVisible;
+                    TgButton.СhildCanBeOnliUrl = true;
                 }
 
 

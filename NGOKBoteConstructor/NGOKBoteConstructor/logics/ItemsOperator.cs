@@ -112,13 +112,13 @@ namespace NGOKBoteConstructor.logics
             if (tGButton == null)
             {
                 tGButton = TGMenu;
-                
             }
-            Max = tGButton.IntTeg;
+            
             for (int i = 0; i < tGButton.TGСhildMenu.Count; i++)
             {
                 Max = GetMaxTeg(tGButton.TGСhildMenu[i], Max);
             }
+
             if (tGButton.IntTeg >= Max)
             {
                 Max = tGButton.IntTeg;
@@ -131,12 +131,14 @@ namespace NGOKBoteConstructor.logics
             if(tGButton == null)
             {
                 tGButton = TGMenu;
-                
             }
-            ints = new List<int>();
-            for (int i = 0; i < GetMaxTeg(tGButton) +1; i++)
+            if (ints == null)
             {
-                ints.Add(i);
+                ints = new List<int>();
+                for (int i = 0; i < GetMaxTeg(tGButton) + 1; i++)
+                {
+                    ints.Add(i);
+                }
             }
             for (int i = 0; i < tGButton.TGСhildMenu.Count; i++)
             {

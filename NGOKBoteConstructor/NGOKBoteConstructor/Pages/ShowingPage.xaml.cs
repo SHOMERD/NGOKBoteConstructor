@@ -35,9 +35,16 @@ namespace NGOKBoteConstructor.Pages
             PerentButtonTeg.Text = "Надпись на нажатой кнопке: " + tGButton.Title;
             PerentObgect.Text = "Текст меню:\n" + tGButton.TextOfMenu;
             listViweData.ItemsSource = null;
-            
-            listViweData.ItemsSource = tGButton.TGСhildMenu;                                                                                
-            
+
+            List<TGButton> Bufer = new List<TGButton>();
+            for (int i = 0; i < tGButton.TGСhildMenu.Count; i++)
+            {
+                if (tGButton.СhildCanBeOnliUrl == tGButton.TGСhildMenu[i].HasUrl)
+                {
+                    Bufer.Add(tGButton.TGСhildMenu[i]);
+                }
+            }
+            listViweData.ItemsSource = Bufer;
 
             if (itemsOperator.TGMenu.Teg == ActiveButtonTeg) 
             {

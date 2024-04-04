@@ -60,7 +60,7 @@
                                     >
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
-                                        <ViewCell >
+                                        <ViewCell>
                                         <StackLayout Orientation="Vertical">
                                             <Frame  BorderColor="Gray" >
                                         

@@ -20,11 +20,11 @@ namespace NGOKBoteConstructor.logics
         {
 
             string jsonPosition = await CreateFile(CreateJsonString(tGButton));
-            if (jsonPosition != "fail")
+            if (jsonPosition != null)
             {
-                if (await Application.Current.MainPage.DisplayAlert("Файл сохранен", $"\tПуть к файлу:\n{jsonPosition}  \n\tФайл:\nNGOKBoteStructure.json", "Скопировать расположение файла", "ок"))
+                if (await Application.Current.MainPage.DisplayAlert("Файл сохранен", $"\tПуть к файлу:\n{jsonPosition}  \n\tФайл:\nNGOKBoteStructure.json", "Открыть папку с файлом", "ок"))
                 {
-                    await Clipboard.SetTextAsync(jsonPosition);
+                    DependencyService.Get<IFileManager>().OpenExplorerAsync(jsonPosition);
                 }
             }
             else
@@ -88,13 +88,17 @@ namespace NGOKBoteConstructor.logics
             }
 
 
-            for (int i = 0; i < tGButton.TGСhildMenu.Count; i++)
+            if (!tGButton.СhildCanBeOnliUrl)
             {
-                if (!tGButton.TGСhildMenu[i].HasUrl)
+                for (int i = 0; i < tGButton.TGСhildMenu.Count; i++)
                 {
-                    JsonString += GetJsonStringRercursive(tGButton.TGСhildMenu[i]);
+                    if (!tGButton.TGСhildMenu[i].HasUrl)
+                    {
+                        JsonString += GetJsonStringRercursive(tGButton.TGСhildMenu[i]);
+                    }
                 }
             }
+            
 
             return JsonString;
         }
@@ -125,14 +129,16 @@ namespace NGOKBoteConstructor.logics
         {
             string JsonString = "";
             List<TGButton> tGButtons = new List<TGButton>();
+
             for (int i = 0; i < tGButton.TGСhildMenu.Count; i++)
             {
-                if (tGButton.TGСhildMenu[i].HasUrl == GetUrl)
+                if (tGButton.СhildCanBeOnliUrl == tGButton.TGСhildMenu[i].HasUrl && tGButton.СhildCanBeOnliUrl == GetUrl)
                 {
                     tGButtons.Add(tGButton.TGСhildMenu[i]);
                 }
             }
             
+
 
 
             if (tGButtons.Count == 0)
